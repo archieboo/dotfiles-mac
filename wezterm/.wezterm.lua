@@ -143,7 +143,7 @@ config.background = {
 		},
 		hsb = {
 			hue = 1,
-			saturation = 1.2,
+			saturation = 1.0,
 			brightness = 0.1,
 		},
 		vertical_align = "Middle", -- Top, Middle, Bottom
@@ -155,7 +155,7 @@ config.background = {
 		},
 		width = "100%",
 		height = "100%",
-		opacity = 0.7,
+		opacity = 0.45,
 	},
 }
 
