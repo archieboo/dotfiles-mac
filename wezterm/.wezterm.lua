@@ -138,24 +138,24 @@ config.background = {
 			File = {
 				path = "/Users/"
 					.. os.getenv("USER")
-					.. "/.config/wezterm/eberhard-grossgasteiger-Sd-zGynsQrQ-unsplash.jpg",
+					.. "/.config/wezterm/marek-piwnicki-RlReZgrueYs-unsplash.jpg",
 			},
 		},
 		hsb = {
-			hue = 1.0,
+			hue = 1,
 			saturation = 1.2,
-			brightness = 0.15,
+			brightness = 0.1,
 		},
 		vertical_align = "Middle", -- Top, Middle, Bottom
 		horizontal_align = "Center", -- Left, Center, Right
 	},
 	{
 		source = {
-			Color = "#0c0712",
+			Color = "#000811",
 		},
 		width = "100%",
 		height = "100%",
-		opacity = 0.6,
+		opacity = 0.7,
 	},
 }
 
