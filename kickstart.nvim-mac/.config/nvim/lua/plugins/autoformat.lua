@@ -1,41 +1,44 @@
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
-    lazy = false,
-    keys = {
-      {
-        '<leader>ft',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = '[F]orma[t] buffer',
-      },
-    },
     enabled = true,
+    keys = {
+      { '<leader>ft', '<cmd>lua require("conform").format()<cr>', desc = '[f]orma[t]' },
+    },
     config = function()
       require('conform').setup {
-        notify_on_error = true,
-        format_on_save = {
-          timeout_ms = 500,
-          lsp_fallback = true,
-        },
+        notify_on_error = false,
+        -- format_on_save = {
+        --   timeout_ms = 500,
+        --   lsp_fallback = true,
+        -- },
         formatters_by_ft = {
-          lua = { 'stylua' },
+          lua = { 'mystylua' },
           python = { 'isort', 'black' },
           quarto = { 'injected' },
         },
+        formatters = {
+          mystylua = {
+            command = 'stylua',
+            args = { '--indent-type', 'Spaces', '--indent-width', '2', '-' },
+          },
+        },
       }
-      -- Customize injected formatters
-      -- see https://github.com/jmbuhr/quarto-nvim-kickstarter/blob/382b050e13eada7180ad048842386be37e820660/lua/plugins/editing.lua#L29-L81
+      -- Customize the "injected" formatter
       require('conform').formatters.injected = {
+        -- Set the options field
         options = {
-          ignore_errors = true,
+          -- Set to true to ignore errors
+          ignore_errors = false,
+          -- Map of treesitter language to file extension
+          -- A temporary file name with this extension will be generated during formatting
+          -- because some formatters care about the filename.
           lang_to_ext = {
             bash = 'sh',
-            r = 'r',
-            python = 'py',
+            -- latex = 'tex',
             markdown = 'md',
+            python = 'py',
+            r = 'r',
           },
           -- Map of treesitter language to formatters to use
           -- (defaults to the value from formatters_by_ft)

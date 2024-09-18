@@ -16,6 +16,9 @@ return {
     -- vim.cmd.hi 'Comment gui=italic'
     -- local colors = require('tokyonight.colors').setup()
     -- end,
+    config = function()
+      require('tokyonight').setup {}
+    end,
   },
   {
     'catppuccin/nvim',
@@ -28,13 +31,54 @@ return {
     end,
     config = function()
       require('catppuccin').setup {
-        flavour = 'macchiato',
+        flavour = 'mocha',
         transparent_background = true,
         vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = '#ace1af' }),
+        custom_highlights = function(colors)
+          return {
+            -- Comment = { fg = '#7b7974' },
+          }
+        end,
       }
     end,
   },
-  { 'olimorris/onedarkpro.nvim', enabled = true },
+  {
+    'olimorris/onedarkpro.nvim',
+    enabled = true,
+    -- init = function()
+    --   vim.cmd.colorscheme 'onedark_vivid'
+    -- end,
+    config = function()
+      require('onedarkpro').setup {
+        colors = {
+          -- red = '#f46f2a',
+          cursorline = '#564760',
+        },
+        highlights = {
+          Comment = { italic = true },
+        },
+        options = {
+          cursorline = true,
+          transparency = true,
+          lualine_transparency = true,
+          highlight_inactive_windows = true,
+        },
+        styles = {
+          types = 'italic',
+        },
+      }
+    end,
+  },
+  {
+    'sainnhe/gruvbox-material',
+    enabled = true,
+    config = function()
+      vim.g.gruvbox_material_enable_italic = true
+      vim.g.gruvbox_material_background = 'hard'
+      vim.g.gruvbox_material_transparent_background = 2
+      vim.g.gruvbox_material_dim_inactive_windows = 1
+    end,
+  },
   { 'projekt0n/github-nvim-theme', enabled = true },
   { -- display color codes in the editor
     'NvChad/nvim-colorizer.lua',

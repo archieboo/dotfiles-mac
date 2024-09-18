@@ -2,8 +2,20 @@ return {
   -- disables hungry features for files larget than 2MB
   { 'LunarVim/bigfile.nvim' },
 
+  { 'numToStr/Comment.nvim', opts = {} },
+  { -- format things as tables
+    'godlygeek/tabular',
+  },
+
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = true } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('todo-comments').setup {}
+    end,
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -39,11 +51,15 @@ return {
       end
 
       require('mini.cursorword').setup()
-
-      -- require('mini.tabline').setup()
-
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
+    end,
+  },
+  -- Add/change/delete surrounding delimiter pairs with ease
+  {
+    'kylechui/nvim-surround',
+    version = '*',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup()
     end,
   },
   {
@@ -127,5 +143,11 @@ return {
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
+  },
+  {
+    'folke/trouble.nvim',
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = 'Trouble',
+    keys = {},
   },
 }

@@ -1,9 +1,7 @@
 return {
-  { 'numToStr/Comment.nvim', opts = {} },
-
   { -- or show symbols in the current file as breadcrumbs
     'Bekaboo/dropbar.nvim',
-    enabled = true,
+    enabled = false,
     -- enabled = function()
     --   return vim.fn.has 'nvim-0.10' == 1
     -- end,
