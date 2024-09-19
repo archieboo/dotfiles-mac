@@ -443,6 +443,6 @@ wk.add({
   { '<leader>w_', '<cmd>resize _<CR>', desc = 'maximize window width' },
 
   { '<leader>x', group = 'e[x]tra' },
-  { '<leader>xl', ':LspInfo<cr>', desc = '[l]sp info' },
+  { mode = {'n', 'i'}, '<leader>xp', ':LoremIpsum paragraphs 2<cr>', desc = 'Generate 2 [p]argraphs'},
   { '<leader>xz', ':source $MYVIMRC<cr>', desc = '[z]ource' },
 }, { mode = 'n', prefix = '<leader>' })
