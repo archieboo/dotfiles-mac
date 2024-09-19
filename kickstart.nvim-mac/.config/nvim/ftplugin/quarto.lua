@@ -26,7 +26,7 @@
 -- if vim.fn.has 'nvim-0.10.0' == 0 then
 --   return
 -- end
---
+
 -- -- highlight code cells similar to
 -- -- 'lukas-reineke/headlines.nvim'
 -- -- (disabled in lua/plugins/ui.lua)
@@ -35,19 +35,19 @@
 -- local parsername = 'markdown'
 -- local parser = ts.get_parser(buf, parsername)
 -- local tsquery = '(fenced_code_block)@codecell'
---
+
 -- -- vim.api.nvim_set_hl(0, '@markup.codecell', { bg = '#000055' })
 -- vim.api.nvim_set_hl(0, '@markup.codecell', {
 --   link = 'CursorLine',
 -- })
---
+
 -- local function clear_all()
 --   local all = api.nvim_buf_get_extmarks(buf, ns, 0, -1, {})
 --   for _, mark in ipairs(all) do
 --     vim.api.nvim_buf_del_extmark(buf, ns, mark[1])
 --   end
 -- end
---
+
 -- local function highlight_range(from, to)
 --   for i = from, to do
 --     vim.api.nvim_buf_set_extmark(buf, ns, i, 0, {
@@ -56,7 +56,7 @@
 --     })
 --   end
 -- end
---
+
 -- local function highlight_cells()
 --   clear_all()
 --
@@ -72,7 +72,7 @@
 --     end
 --   end
 -- end
---
+
 -- highlight_cells()
 --
 -- vim.api.nvim_create_autocmd({ 'ModeChanged', 'BufWrite' }, {

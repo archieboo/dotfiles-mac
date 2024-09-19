@@ -94,23 +94,36 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
-    code_blocks = {
-      style = 'minimal',
-      icons = true,
-      position = nil,
-      min_width = 80,
 
-      pad_amount = 1,
-      pad_char = ' ',
+    config = function()
+      modes = { 'n', 'no', 'c' }
+      hybrid_modes = { 'n' }
 
-      language_direction = 'left',
-      language_names = {},
+      code_blocks = {
+        style = 'minimal',
+        icons = true,
+        position = nil,
+        min_width = 120,
 
-      hl = 'CursorLine',
+        pad_amount = 1,
+        pad_char = ' ',
 
-      sign = true,
-      sign_hl = nil,
-    },
+        language_direction = 'left',
+        language_names = {},
+
+        hl = 'CursorLine',
+
+        sign = true,
+        sign_hl = nil,
+      }
+
+      callbacks = {
+        on_enable = function(_, win)
+          vim.wo[win].conceallevel = 2
+          vim.wo[win].concealcursor = 'c'
+        end,
+      }
+    end,
   },
   { -- fancier terminal
     'akinsho/toggleterm.nvim',
