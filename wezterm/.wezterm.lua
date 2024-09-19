@@ -12,13 +12,13 @@ config.automatically_reload_config = true
 -- fonts
 config.font_size = 12
 -- config.dpi = 144.0
-config.font = wezterm.font({ family = "FiraCode Nerd Font" })
+config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
 config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
 config.font_rules = {
 	{
 		intensity = "Normal",
 		italic = false,
-		font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular", style = "Normal" }),
+		font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Regular", style = "Normal" }),
 	},
 	{
 		intensity = "Normal",
