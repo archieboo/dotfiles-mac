@@ -28,7 +28,7 @@ config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = false,
-		font = wezterm.font({ family = "CaskaydiaCove Nerd Font", weight = "Bold", style = "Normal" }),
+		font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Bold", style = "Normal" }),
 	},
 	{
 		intensity = "Bold",
@@ -38,7 +38,7 @@ config.font_rules = {
 	{
 		intensity = "Half",
 		italic = false,
-		font = wezterm.font({ family = "CaskaydiaCove Nerd Font", weight = "Light", style = "Normal" }),
+		font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Light", style = "Normal" }),
 	},
 	{
 		intensity = "Half",
@@ -138,7 +138,7 @@ config.background = {
 			File = {
 				path = "/Users/"
 					.. os.getenv("USER")
-					.. "/.config/wezterm/marek-piwnicki-RlReZgrueYs-unsplash.jpg",
+					.. "/.config/wezterm/shubham-dhage-z0rv6khFbo0-unsplash.jpg",
 			},
 		},
 		hsb = {
@@ -151,11 +151,11 @@ config.background = {
 	},
 	{
 		source = {
-			Color = "#000811",
+			Color = "#021014",
 		},
 		width = "100%",
 		height = "100%",
-		opacity = 0.45,
+		opacity = .4,
 	},
 }
 
