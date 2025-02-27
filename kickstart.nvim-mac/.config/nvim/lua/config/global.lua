@@ -47,6 +47,7 @@ local options = {
   numberwidth = 4, -- set number column width to 2 {default 4}
   signcolumn = 'yes:1', -- always show the sign column, otherwise it would shift the text each time
   wrap = true, -- display lines as one long line
+  linebreak = true, -- wrap lines at convenient points (not breaking words)
   scrolloff = 8, -- Minimal number of screen lines to keep above and below the cursor.
   sidescrolloff = 0, -- Minimal number of screen columns to keep to the left and right of the cursor.
   title = true, -- set the title of window to the value of the titlestring
