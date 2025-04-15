@@ -12,6 +12,7 @@ return {
         'lua',
         'luadoc',
         'markdown',
+        'regex',
         'vim',
         'vimdoc',
         'yaml',
