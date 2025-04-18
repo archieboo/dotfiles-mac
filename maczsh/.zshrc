@@ -35,21 +35,7 @@ fi
 # source api keys
 source ~/.api_keys
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-    . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-  else
-    export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-  fi
-fi
-unset __conda_setup
 
-# <<< conda initialize <<<
 
 # pnpm
 export PNPM_HOME="/Users/chao/Library/pnpm"
@@ -104,15 +90,23 @@ alias ts='tmux new-session -s'
 # starship
 eval "$(starship init zsh)"
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/opt/homebrew/Caskroom/miniconda/base/condabin/mamba';
-export MAMBA_ROOT_PREFIX='/opt/homebrew/Caskroom/miniconda/base';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/chao/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
+    eval "$__conda_setup"
 else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+    if [ -f "/Users/chao/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/chao/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/chao/miniforge3/bin:$PATH"
+    fi
 fi
-unset __mamba_setup
-# <<< mamba initialize <<<
+unset __conda_setup
+
+if [ -f "/Users/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/chao/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+

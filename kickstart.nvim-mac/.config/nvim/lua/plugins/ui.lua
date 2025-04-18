@@ -64,9 +64,13 @@ return {
   },
   {
     'stevearc/oil.nvim',
-    opts = {},
     -- Optional dependencies
     dependencies = { 'echasnovski/mini.icons' },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      }
+    },
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -88,6 +92,7 @@ return {
   },
   {
     'OXY2DEV/markview.nvim',
+    enabled = true,
     lazy = true, -- Recommended
     ft = { 'markdown', 'rmd', 'quarto' },
     dependencies = {
@@ -140,7 +145,7 @@ return {
   },
   {
     'folke/noice.nvim',
-    enabled = true,
+    enabled = false,
     event = 'VeryLazy',
     opts = {},
     dependencies = {
