@@ -73,7 +73,7 @@ return {
           mode = 'buffers',
           separator_style = 'thin',
           indicator = {
-            icon = ' 🍑',
+            icon = ' 🌈',
             style = 'icon',
           },
         },
