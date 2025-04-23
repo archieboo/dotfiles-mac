@@ -138,7 +138,7 @@ config.background = {
 			File = {
 				path = "/Users/"
 					.. os.getenv("USER")
-					.. "/.config/wezterm/shubham-dhage-z0rv6khFbo0-unsplash.jpg",
+					.. "/.config/wezterm/ingmar-h-HZksGaLPJA4-unsplash.jpg",
 			},
 		},
 		hsb = {
