@@ -110,3 +110,6 @@ if [ -f "/Users/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+# setopt to avoid globbing report error when no match found
+setopt null_glob
+
