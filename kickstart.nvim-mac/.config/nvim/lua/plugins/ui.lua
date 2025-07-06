@@ -88,6 +88,7 @@ return {
   },
   {
     'OXY2DEV/markview.nvim',
+    enabled = false,
     lazy = true, -- Recommended
     ft = { 'markdown', 'rmd', 'quarto' },
     dependencies = {
