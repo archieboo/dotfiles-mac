@@ -61,10 +61,8 @@ bindkey '^I' menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
 
 # personal aliases
-alias pinyc='ssh -i ~/.ssh/raspi_ssh pi@192.168.1.111'
-alias sshnyc='ssh -i ~/.ssh/raspi_ssh pi@10.0.0.111'
 alias pichi='ssh -i ~/.ssh/chicago_pi pi@192.168.1.228'
-alias imac='ssh -i ~/.ssh/imac_chao Chao@192.168.1.112'
+alias mmini='ssh -i ~/.ssh/macminim4 chao@192.168.1.102'
 # for using with kitty
 alias vim=nvim
 alias clr='clear' # since ctrl-l is not working in tmux

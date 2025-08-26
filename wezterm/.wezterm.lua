@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "tokyonight_moon"
 
-config.default_cursor_style = "SteadyBar"
+config.default_cursor_style = "BlinkingBlock"
 config.automatically_reload_config = true
 
 -- fonts
