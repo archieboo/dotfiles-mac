@@ -17,7 +17,9 @@ return {
     -- local colors = require('tokyonight.colors').setup()
     -- end,
     config = function()
-      require('tokyonight').setup {}
+      require('tokyonight').setup {
+        transparent = true,
+      }
     end,
   },
   {
