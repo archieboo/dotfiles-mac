@@ -77,6 +77,8 @@ alias ts='tmux new-session -s'
 # starship
 eval "$(starship init zsh)"
 
+# setopt to avoid globbing report error when no match found
+setopt null_glob
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -92,11 +94,17 @@ else
 fi
 unset __conda_setup
 
-if [ -f "/Users/chao/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/chao/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 
-# setopt to avoid globbing report error when no match found
-setopt null_glob
-
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/Users/chao/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/Users/chao/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
