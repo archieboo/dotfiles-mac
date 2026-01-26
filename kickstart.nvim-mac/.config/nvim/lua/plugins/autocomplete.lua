@@ -170,7 +170,7 @@ return {
           debounce = 75,
           keymap = {
             accept = '<c-j>',
-            accept_word = '<c-h>',
+            accept_word = '<c-m>',
             accept_line = '<c-k>',
             next = '<M-]>',
             prev = '<M-[>',

@@ -287,7 +287,8 @@ return {
   {
     -- LSPSaga to enahcnce LSP features
     'nvimdev/lspsaga.nvim',
-    lazy = true,
+    -- lazy = true,
+    enabled = false,
     event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
