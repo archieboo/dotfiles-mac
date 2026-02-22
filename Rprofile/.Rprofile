@@ -1,2 +1,1 @@
-options(languageserver.lint = FALSE) # disable linting in languageserver
-
+options(languageserver.diagnostics = TRUE) # disable linting in languageserver
