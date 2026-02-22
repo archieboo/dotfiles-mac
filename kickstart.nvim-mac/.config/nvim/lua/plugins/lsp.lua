@@ -189,6 +189,7 @@ return {
             r = {
               lsp = {
                 rich_documentation = false,
+                diagnostics = false,
               },
             },
           },
@@ -287,8 +288,8 @@ return {
   {
     -- LSPSaga to enahcnce LSP features
     'nvimdev/lspsaga.nvim',
-    -- lazy = true,
-    enabled = false,
+    lazy = true,
+    enabled = true,
     event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
