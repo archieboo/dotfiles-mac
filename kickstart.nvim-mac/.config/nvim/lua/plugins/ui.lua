@@ -90,6 +90,7 @@ return {
       require('colorful-winsep').setup()
     end,
   },
+  
   {
     'OXY2DEV/markview.nvim',
     enabled = true,
@@ -99,37 +100,42 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
-
-    config = function()
-      modes = { 'n', 'no', 'c' }
-      hybrid_modes = { 'n' }
-
-      code_blocks = {
-        style = 'minimal',
-        icons = true,
-        position = nil,
-        min_width = 120,
-
-        pad_amount = 1,
-        pad_char = ' ',
-
-        language_direction = 'left',
-        language_names = {},
-
-        hl = 'CursorLine',
-
-        sign = true,
-        sign_hl = nil,
-      }
-
-      callbacks = {
-        on_enable = function(_, win)
-          vim.wo[win].conceallevel = 2
-          vim.wo[win].concealcursor = 'c'
-        end,
-      }
-    end,
+    opts = {
+      norg = { enable = false },
+      preview = {
+        icon_provider = 'devicons',
+      },
+      markdown = {
+        headings = {
+          enable = true,
+          heading_1 = {icon = '󰲡 '},
+          heading_2 = {icon = '󰲣 '},
+          heading_3 = {icon = '󰲥 '},
+          heading_4 = {icon = '󰲧 '},
+          heading_5 = {icon = '󰲩 '},
+          heading_6 = {icon = '󰲫 '},
+        },
+        code_blocks = {
+          label_direction = "left",
+        },
+        list_items = {
+          enable = false,
+        },
+        metadata_minus = {
+          enable = true,
+        },
+        reference_definitions = {
+          enable = true,
+        },
+      },
+      markdown_inline = {
+        footnotes = {
+          enable = false,
+        },
+      },
+    }
   },
+
   { -- fancier terminal
     'akinsho/toggleterm.nvim',
     opts = {},
