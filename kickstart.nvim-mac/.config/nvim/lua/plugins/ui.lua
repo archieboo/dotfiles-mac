@@ -69,7 +69,7 @@ return {
     opts = {
       view_options = {
         show_hidden = true,
-      }
+      },
     },
   },
   {
@@ -108,15 +108,15 @@ return {
       markdown = {
         headings = {
           enable = true,
-          heading_1 = {icon = '󰲡 '},
-          heading_2 = {icon = '󰲣 '},
-          heading_3 = {icon = '󰲥 '},
-          heading_4 = {icon = '󰲧 '},
-          heading_5 = {icon = '󰲩 '},
-          heading_6 = {icon = '󰲫 '},
+          heading_1 = { icon = '󰲡 ' },
+          heading_2 = { icon = '󰲣 ' },
+          heading_3 = { icon = '󰲥 ' },
+          heading_4 = { icon = '󰲧 ' },
+          heading_5 = { icon = '󰲩 ' },
+          heading_6 = { icon = '󰲫 ' },
         },
         code_blocks = {
-          label_direction = "left",
+          label_direction = 'left',
         },
         list_items = {
           enable = false,
@@ -133,7 +133,7 @@ return {
           enable = false,
         },
       },
-    }
+    },
   },
 
   { -- fancier terminal

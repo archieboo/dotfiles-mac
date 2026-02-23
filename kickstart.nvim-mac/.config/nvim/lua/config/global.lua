@@ -56,6 +56,8 @@ local options = {
   winbar = '%f', -- display the filename in the window titlebar
   list = true, -- sets how nvim display white spaces, see :help 'list' and :help 'listchars'
   listchars = { tab = '» ', trail = '·', nbsp = '␣' }, -- sets the characters to be displayed with 'list' option
+  spell = false, -- turn off spell checking
+  spelllang = { 'en_us', 'fr' },
 }
 
 for k, v in pairs(options) do
