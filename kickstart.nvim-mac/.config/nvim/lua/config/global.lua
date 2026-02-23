@@ -60,6 +60,15 @@ local options = {
   spelllang = { 'en_us', 'fr' },
 }
 
+-- Tell Neovim exactly where the two files are
+-- Since they are in ~/.config/nvim/spell:
+local spell_dir = vim.fn.expand('~/.config/nvim/spell')
+
+vim.opt.spellfile = {
+  spell_dir .. '/en.utf-8.add',
+  spell_dir .. '/fr.utf-8.add'
+}
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
