@@ -145,18 +145,18 @@ config.background = {
 		hsb = {
 			hue = .5,
 			saturation = 1.0,
-			brightness = 0.05,
+			brightness = 0.02,
 		},
 		vertical_align = "Middle", -- Top, Middle, Bottom
 		horizontal_align = "Center", -- Left, Center, Right
 	},
 	{
 		source = {
-			Color = "#000000",
+			Color = "#291B10",
 		},
 		width = "100%",
 		height = "100%",
-		opacity = .7,
+		opacity = .5,
 	},
 }
 
