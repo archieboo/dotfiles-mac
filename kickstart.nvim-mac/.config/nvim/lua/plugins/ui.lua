@@ -186,8 +186,14 @@ return {
           override = {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
             ['vim.lsp.util.stylize_markdown'] = true,
-            ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+            -- ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
           },
+          hover = {
+            enabled = true,
+            silent = false,
+            view = "hover",
+            opts = {},
+          }
         },
         presets = {
           bottom_search = false, -- use a classic bottom cmdline for search
@@ -199,6 +205,22 @@ return {
       }
     end,
   },
+
+  { -- render markdown in a floating window
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+      win_config = {
+        floating = {
+          rendered_viewport = true,
+        },
+      },
+    },
+  },
+
   -- UI configuration as a separate table inside the returned table
   ui = {
     -- If you are using a Nerd Font, set icons to an empty table to use the default lazy.nvim Nerd Font icons
