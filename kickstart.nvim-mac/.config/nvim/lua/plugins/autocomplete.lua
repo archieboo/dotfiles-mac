@@ -56,7 +56,7 @@ return {
         ['<Tab>'] = { 'select_next', 'fallback' },
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<c-y>'] = { 'show', 'show_documentation', 'hide_documentation' },
-        -- ['<c-k>'] = {},
+        ['<c-k>'] = {}, -- to avoid conflict with copilot
       },
       cmdline = {
         enabled = false,
