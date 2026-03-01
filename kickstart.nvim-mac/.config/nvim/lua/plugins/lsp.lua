@@ -22,25 +22,25 @@ return {
         opts = {
           automatic_enable = false,
           ensure_installed = {
-            'lua_ls',
-            'bashls',
-            'cssls',
-            'html',
-            'pyright',
-            'r_language_server',
-            -- 'texlab',
-            -- 'dotls',
-            -- 'svelte',
-            'ts_ls',
-            'yamlls',
-            -- 'clangd',
-            'ltex',
+            'lua_ls', -- lua-language-server
+            'bashls', -- bash-language-server
+            'cssls', -- css-lsp
+            'html', -- html-lsp
+            'pyright', -- python-lsp
+            'r_language_server', -- r-lsp
+            -- 'texlab', 
+            -- 'dotls', 
+            -- 'svelte', 
+            'ts_ls', -- typescript-language-server
+            'yamlls', -- yaml-language-server
+            -- 'clangd', -- for c/c++
+            -- 'ltex', -- ltex is a language server for grammar and spell checking
             -- 'sqlls',
-            -- 'emmet_language_server',
-            -- 'hls',
+            -- 'emmet_language_server', 
+            -- 'hls', 
             -- 'julia-lsp'
             -- 'rust-analyzer',
-            -- 'marksman',
+            'marksman', -- markdown-lsp
           },
         },
       },
@@ -48,12 +48,12 @@ return {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
         opts = {
           ensure_installed = {
-            'black',
-            'stylua',
-            'shfmt',
-            'isort',
-            'tree-sitter-cli',
-            'jupytext',
+            'black', -- python formatter
+            'stylua', -- lua formatter
+            'shfmt', -- shell formatter
+            'isort', -- python import sorter
+            'tree-sitter-cli', -- for nvim-treesitter
+            -- 'jupytext', 
           },
         },
       },
@@ -127,7 +127,7 @@ return {
         settings = {
           r = {
             lsp = {
-              rich_documentation = true,
+              rich_documentation = false,
             },
           },
         },

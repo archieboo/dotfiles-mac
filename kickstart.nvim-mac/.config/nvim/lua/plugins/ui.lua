@@ -206,20 +206,6 @@ return {
     end,
   },
 
-  { -- render markdown in a floating window
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      win_config = {
-        floating = {
-          rendered_viewport = true,
-        },
-      },
-    },
-  },
 
   -- UI configuration as a separate table inside the returned table
   ui = {
