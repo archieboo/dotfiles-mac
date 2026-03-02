@@ -73,6 +73,7 @@ return {
     },
     config = function()
       local util = require 'lspconfig.util'
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -97,14 +98,6 @@ return {
         allow_incremental_sync = true,
         debounce_text_changes = 150,
       }
-
-      local capabilities
-      local has_blink, blink = pcall(require, 'blink')
-      if has_blink then
-        capabilities = blink.get_lsp_capabilities({}, true)
-      else
-        capabilities = vim.lsp.protocol.make_client_capabilities()
-      end
 
       -- set defaults for all clients
       vim.lsp.config('*', {
