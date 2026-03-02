@@ -45,7 +45,7 @@ return {
         dev = false,
         ft = { 'quarto', 'markdown', 'rmarkdown' },
       },
-      { 'kdheepak/cmp-latex-symbols' },
+      -- { 'kdheepak/cmp-latex-symbols' },
       { 'erooke/blink-cmp-latex' },
     },
     ---@module 'blink.cmp'
@@ -62,17 +62,7 @@ return {
         enabled = false,
       },
       sources = {
-        default = { 
-          'lazydev', 
-          'lsp', 
-          'path', 
-          'references', 
-          'git', 
-          'snippets', 
-          'buffer', 
-          'emoji', 
-          'latex' 
-        },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'git', 'emoji', 'latex', 'references' },
         providers = {
           emoji = {
             module = 'blink-emoji',
@@ -96,12 +86,6 @@ return {
               return vim.tbl_contains({ 'octo', 'gitcommit', 'git' }, vim.bo.filetype)
             end,
           },
-          references = {
-            name = 'pandoc_references',
-            module = 'cmp-pandoc-references.blink',
-            score_offset = 2,
-          },
-          symbols = { name = 'symbols', module = 'blink.compat.source' },
           latex = {
             name = 'Latex',
             module = 'blink-cmp-latex',
@@ -117,6 +101,12 @@ return {
                 return false
               end,
             },
+          },
+          -- compact sources (legacy / bridge)
+          references = {
+            name = 'pandoc_references',
+            module = 'cmp-pandoc-references.blink',
+            score_offset = 2,
           },
         },
       },
