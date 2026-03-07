@@ -82,6 +82,15 @@ return {
     end,
   },
   { 'projekt0n/github-nvim-theme', enabled = true },
+  { 
+    'rose-pine/neovim', 
+    name = 'rose-pine',
+    enabled = true,
+    config = function()
+      require('rose-pine').setup {
+      }
+    end,
+  },
   { -- display color codes in the editor
     'NvChad/nvim-colorizer.lua',
     opts = {
