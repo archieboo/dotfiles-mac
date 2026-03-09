@@ -1,6 +1,7 @@
 #------ Cursor
 cursor-style = block
 cursor-style-blink = true
+cursor-opacity = 0.8
 shell-integration-features = no-cursor
 
 #------ Bell
@@ -9,8 +10,12 @@ bell-features = no-system
 #------ Appearance
 theme = Catppuccin Mocha 
 
-background-opacity = .9
-background-blur = 20
+background-opacity = .85
+background-blur = 10
+background-image = ~/Desktop/macOsBackground1.jpg
+background-image-opacity = .2
+background-image-fit = cover
+
 
 #------ Font
 font-family = JetBrainsMonoNerdFont
