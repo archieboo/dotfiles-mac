@@ -1,21 +1,22 @@
-#------ Cursor
+#------ Cursor ------#
 cursor-style = block
 cursor-style-blink = true
 cursor-opacity = 0.8
 shell-integration-features = no-cursor
 
-#------ Bell
+#------ Bell ------#
 bell-features = no-system
 
-#------ Appearance
-theme = Catppuccin Mocha 
+#------ Appearance ------#
+theme = Catppuccin Mocha
 
-background-opacity = .85
+background-opacity = 1
 background-blur = 10
-background-image = ~/Desktop/macOsBackground1.jpg
-background-image-opacity = .2
+# background = #1F1F1F
+background-image = ~/Desktop/andreas-gucklhorn-mawU2PoJWfU-unsplash.png
+background-image-opacity = .15
 background-image-fit = cover
 
-
-#------ Font
+#------ Font ------#
 font-family = JetBrainsMonoNerdFont
+font-size = 12
