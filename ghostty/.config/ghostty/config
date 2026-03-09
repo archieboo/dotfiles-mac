@@ -12,6 +12,11 @@ theme = Catppuccin Mocha
 
 background-opacity = 1
 background-blur = 10
+
+#------ titlebar ------#
+macos-titlebar-style = hidden
+window-padding-x = 5
+
 # background = #1F1F1F
 background-image = ~/Desktop/andreas-gucklhorn-mawU2PoJWfU-unsplash.png
 background-image-opacity = .15
