@@ -10,12 +10,12 @@ bell-features = no-system
 #------ Appearance ------#
 theme = Catppuccin Mocha
 
-background-opacity = .8
+background-opacity = 1
 background-blur = 10
 
 # background = #1F1F1F
-# background-image = ~/Desktop/andreas-gucklhorn-mawU2PoJWfU-unsplash.png
-background-image-opacity = .1
+background-image = ~/Desktop/andreas-gucklhorn-mawU2PoJWfU-unsplash.png
+background-image-opacity = .05
 background-image-fit = cover
 
 #------ titlebar ------#
