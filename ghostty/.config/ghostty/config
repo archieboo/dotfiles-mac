@@ -1,19 +1,19 @@
-#------ Cursor ------#
+#-------- Cursor --------#
 cursor-style = block
 cursor-style-blink = true
 cursor-opacity = 0.8
 shell-integration-features = no-cursor
 
-#------ Bell ------#
+#--------- Bell ---------#
 bell-features = no-system
 
-#------ Appearance ------#
+#------- Appearance -----#
 theme = Catppuccin Mocha
 
-background-opacity = 1
-background-blur = 10
+background = grey9
+background-opacity = .9
+background-blur = 20
 
-# background = #1F1F1F
 # background-image = ~/Desktop/andreas-gucklhorn-mawU2PoJWfU-unsplash.png
 background-image-opacity = .05
 background-image-fit = cover
@@ -24,4 +24,4 @@ window-padding-x = 5
 
 #------ Font ------#
 font-family = JetBrainsMonoNerdFont
-font-size = 12
+font-size = 14
