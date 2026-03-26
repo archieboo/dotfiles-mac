@@ -1,0 +1,99 @@
+# ============================================================
+# General settings
+# ============================================================
+set status_format = "[ %f ] [%r%m msgs%?n? %n new?%?d? %d del?%?t? %t tag?] %> %?p?%p postponed? "
+set mail_check    = 60
+set timeout       = 10
+set sort          = threads
+set sort_aux      = reverse-last-date-received
+set pager_index_lines = 10
+set pager_stop    = yes
+set markers       = no
+set mark_old      = no
+set mime_forward  = yes
+set editor        = `echo $EDITOR`
+
+# Cache
+set header_cache     = "~/.cache/neomutt/headers"
+set message_cachedir = "~/.cache/neomutt/bodies"
+set certificate_file = "~/.cache/neomutt/certificates"
+
+# ============================================================
+# Sidebar
+# ============================================================
+set sidebar_visible   = yes
+set sidebar_width     = 30
+set sidebar_format    = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path = yes
+set sidebar_delim_chars = "/"
+
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cb sidebar-toggle-visible
+
+# ============================================================
+# Account switching
+# ============================================================
+macro index ,i '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/icloud<enter><change-folder>!<enter>'  "Switch to iCloud"
+macro index ,g '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'   "Switch to Gmail"
+
+# ============================================================
+# Default account
+# ============================================================
+source ~/.config/neomutt/accounts/gmail
+
+# ============================================================
+# Key bindings
+# ============================================================
+bind index g        noop
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+
+bind pager j  next-line
+bind pager k  previous-line
+bind pager g  noop
+bind pager gg top
+bind pager G  bottom
+
+# ============================================================
+# Colors (Catppuccin Mocha)
+# ============================================================
+color normal        default default
+color index         color2  default ~N      # new messages - Green
+color index         color1  default ~F      # flagged - Red
+color index         color13 default ~T      # tagged - Pink
+color index         color1  default ~D      # deleted - Red
+color attachment    color5  default         # attachments - Pink
+color signature     color8  default         # signatures - Surface 2
+color search        color4  default         # search highlight - Blue
+
+color indicator     default color8          # highlighted message
+color error         color1  default         # errors - Red
+color status        color15 default         # status line - Subtext 0
+color tree          color15 default         # thread tree arrows
+color tilde         color15 default         # blank line padding
+
+color hdrdefault    color13 default
+color header        color13 default "^From:"
+color header        color13 default "^Subject:"
+
+color quoted        color15 default
+color quoted1       color7  default
+color quoted2       color8  default
+color quoted3       color0  default
+color quoted4       color0  default
+color quoted5       color0  default
+
+color body  color2 default  "[.+_a-zA-Z0-9-]+@[.a-zA-Z0-9-]+"              # emails
+color body  color2 default  "(https?|ftp)://[.,/%~_:?&=#a-zA-Z0-9-]+"      # URLs
+color body  color4 default  "(^|[[:space:]])[*][^[:space:]]+[*]([[:space:]]|$)" # *bold*
+color body  color4 default  "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)" # _underline_
+color body  color4 default  "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)" # /italic/
+
+color sidebar_flagged   color1  default
+color sidebar_new       color10 default
+color sidebar_highlight default color8

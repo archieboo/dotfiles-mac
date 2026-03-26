@@ -1,0 +1,56 @@
+# iCloud (bajia@me.com)
+IMAPAccount icloud
+Host imap.mail.me.com
+Port 993
+User bajia@me.com
+PassCmd "security find-internet-password -a bajia@me.com -s imap.mail.me.com -w"
+AuthMechs LOGIN
+TLSType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+Subfolders Verbatim
+Path ~/Mails/iCloud/
+Inbox ~/Mails/iCloud/INBOX
+
+Channel icloud
+Far :icloud-remote:
+Near :icloud-local:
+Patterns *
+Create Near
+Expunge None
+SyncState *
+MaxMessages 6000
+ExpireUnread yes
+
+
+# Gmail (daichao@gmail.com)
+IMAPAccount gmail
+Host imap.gmail.com
+Port 993
+User daichao@gmail.com
+PassCmd "security find-internet-password -a daichao@gmail.com -s imap.gmail.com -w"
+AuthMechs LOGIN
+TLSType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/Mails/Gmail/
+Inbox ~/Mails/Gmail/INBOX
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns *
+Create Near
+Expunge None
+SyncState *
+MaxMessages 6000
+ExpireUnread yes

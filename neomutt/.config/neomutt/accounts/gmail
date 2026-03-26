@@ -1,0 +1,14 @@
+# Gmail account settings
+set realname  = "Chao Dai"
+set from      = "daichao@gmail.com"
+
+set folder    = "~/Mails/Gmail"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record    = "+[Gmail]/Sent Mail"
+set trash     = "+[Gmail]/Trash"
+
+set smtp_url      = "smtp://daichao@gmail.com@smtp.gmail.com:587"
+set smtp_pass     = `security find-internet-password -a 'daichao@gmail.com' -s 'imap.gmail.com' -w`
+
+mailboxes +INBOX "+[Gmail]/Sent Mail" "+[Gmail]/Drafts" "+[Gmail]/Trash" "+[Gmail]/Spam"

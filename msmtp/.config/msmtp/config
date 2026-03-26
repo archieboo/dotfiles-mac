@@ -1,0 +1,24 @@
+# Default account
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/cert.pem
+logfile        ~/.config/msmtp/msmtp.log
+
+# iCloud (bajia@me.com)
+account        icloud
+host           smtp.mail.me.com
+port           587
+from           bajia@me.com
+user           bajia@me.com
+passwordeval   "security find-internet-password -a 'bajia@me.com' -s 'imap.mail.me.com' -w"
+
+# Gmail (daichao@gmail.com)
+account        gmail
+host           smtp.gmail.com
+port           587
+from           daichao@gmail.com
+user           daichao@gmail.com
+passwordeval   "security find-internet-password -a 'daichao@gmail.com' -s 'imap.gmail.com' -w"
+
+account default : icloud

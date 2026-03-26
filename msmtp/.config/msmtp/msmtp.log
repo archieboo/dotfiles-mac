@@ -1,0 +1,2 @@
+Mar 26 16:28:27 host=smtp.mail.me.com tls=on auth=on user=bajia@me.com from=bajia@me.com recipients=bajia@me.com mailsize=146 smtpstatus=250 smtpmsg='250 2.0.0 Ok: queued as B99551800133' exitcode=EX_OK
+Mar 26 16:28:36 host=smtp.gmail.com tls=on auth=on user=daichao@gmail.com from=daichao@gmail.com recipients=daichao@gmail.com mailsize=153 smtpstatus=250 smtpmsg='250 2.0.0 OK  1774560516 006d021491bc7-67e0ab1b9e3sm2443101eaf.12 - gsmtp' exitcode=EX_OK

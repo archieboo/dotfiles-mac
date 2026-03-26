@@ -1,0 +1,14 @@
+# iCloud account settings
+set realname  = "Chao Dai"
+set from      = "bajia@me.com"
+
+set folder    = "~/Mails/iCloud"
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set record    = "+Sent Messages"
+set trash     = "+Deleted Messages"
+
+set smtp_url      = "smtp://bajia@me.com@smtp.mail.me.com:587"
+set smtp_pass     = `security find-internet-password -a 'bajia@me.com' -s 'imap.mail.me.com' -w`
+
+mailboxes +INBOX "+Sent Messages" "+Drafts" "+Deleted Messages" "+Junk"
