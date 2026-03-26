@@ -21,7 +21,7 @@ Far :icloud-remote:
 Near :icloud-local:
 Patterns *
 Create Near
-Expunge None
+Expunge Both
 SyncState *
 MaxMessages 6000
 ExpireUnread yes
@@ -50,7 +50,7 @@ Far :gmail-remote:
 Near :gmail-local:
 Patterns *
 Create Near
-Expunge None
+Expunge Both
 SyncState *
 MaxMessages 6000
 ExpireUnread yes
