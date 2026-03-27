@@ -5,15 +5,15 @@ set status_format = " Gmail  ·  %f  ·  %r%m msgs%?n?  %n new?%?d?  %d del?%?t?
 
 set folder    = "~/Mails/Gmail"
 set spoolfile = "+INBOX"
-set postponed = "+Drafts"
-set record    = "+Sent Messages"
-set trash     = "+Deleted Messages"
+set postponed = "+[Gmail]/Drafts"
+set record    = "+[Gmail]/Sent Mail"
 
 set sendmail = "msmtp --account=gmail"
 
 unmailboxes *
+source ~/.config/neomutt/notmuch
 named-mailboxes "Gmail/INBOX"    +INBOX
-named-mailboxes "Gmail/Sent"     +"Sent Messages"
-named-mailboxes "Gmail/Drafts"   +Drafts
-named-mailboxes "Gmail/Trash"    +"Deleted Messages"
+named-mailboxes "Gmail/Sent"     +"[Gmail]/Sent Mail"
+named-mailboxes "Gmail/Drafts"   +"[Gmail]/Drafts"
+named-mailboxes "Gmail/Trash"    +"[Gmail]/Trash"
 named-mailboxes "Gmail/Spam"     +"[Gmail]/Spam"

@@ -23,7 +23,7 @@ Patterns INBOX Drafts Sent Junk Trash
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 200
+MaxMessages 2000
 ExpireUnread yes
 
 
@@ -48,9 +48,9 @@ Inbox ~/Mails/Gmail/INBOX
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
-Patterns INBOX "Sent Messages" "Deleted Messages" Drafts "[Gmail]/Spam"
+Patterns INBOX "[Gmail]/Sent Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Spam"
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 200
+MaxMessages 2000
 ExpireUnread yes

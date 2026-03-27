@@ -1,11 +1,13 @@
 # ============================================================
 # General settings
 # ============================================================
+set query_command = "~/.config/neomutt/notmuch-query.sh '%s'"
 set mailcap_path = ~/.config/neomutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
 
 set status_format = " %f  ·  %r%m msgs%?n?  %n new?%?d?  %d del?%?t?  %t tag? %>  %?p?%p postponed  ? "
+set index_format  = "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %?M?[%M] ?%s"
 set mail_check    = 60
 set timeout       = 10
 set sort          = threads
@@ -17,6 +19,7 @@ set markers       = no
 set mark_old      = no
 set mime_forward  = yes
 set editor        = `echo $EDITOR`
+set attach_save_dir = "~/Downloads"
 
 # Cache
 set header_cache     = "~/.cache/neomutt/headers"
@@ -45,10 +48,29 @@ macro index,pager ,b "<enter-command>set wait_key=no<enter><pipe-message>~/.conf
 macro index ,i '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/icloud<enter><change-folder>!<enter>'  "Switch to iCloud"
 macro index ,g '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'   "Switch to Gmail"
 
+bind compose , noop
+macro compose ,i "<enter-command>set from='bajia@me.com' sendmail='msmtp --account=icloud'<enter><enter-command>push '<edit-from>'<enter>" "Send as iCloud"
+macro compose ,g "<enter-command>set from='daichao@gmail.com' sendmail='msmtp --account=gmail'<enter><enter-command>push '<edit-from>'<enter>" "Send as Gmail"
+
+# ============================================================
+# Notmuch
+# ============================================================
+set nm_default_uri = "notmuch:///Users/chao/Mails"
+set nm_db_limit    = 500
+source ~/.config/neomutt/notmuch
+
+macro index ,n "<vfolder-from-query>" "Search mail with notmuch"
+macro index ,u "<change-vfolder>notmuch:///Users/chao/Mails?query=tag:inbox<enter>" "Go to unified inbox"
+
+# When replying from unified inbox, detect which account received the message
+reply-hook . "set sendmail='msmtp --account=gmail'; set from='daichao@gmail.com'"
+reply-hook '~C bajia@me.com' "set sendmail='msmtp --account=icloud'; set from='bajia@me.com'"
+
 # ============================================================
 # Default account
 # ============================================================
 source ~/.config/neomutt/accounts/gmail
+set spoolfile = "notmuch:///Users/chao/Mails?query=tag:inbox"
 
 # ============================================================
 # Headers
@@ -64,7 +86,7 @@ bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
 bind index <tab>    sync-mailbox
-macro index ,s "<enter-command>set wait_key=no<enter><shell-escape>mbsync -a &>/dev/null &<enter><enter-command>set wait_key=yes<enter>" "sync all mail"
+macro index ,s "<enter-command>set wait_key=no<enter><shell-escape>(mbsync -a && notmuch new) &>/dev/null &<enter><enter-command>set wait_key=yes<enter>" "sync all mail"
 bind index <space>  collapse-thread
 
 bind pager j  next-line
@@ -77,17 +99,17 @@ bind pager G  bottom
 # Colors (Catppuccin Mocha)
 # ============================================================
 color normal        default default
-color index         color2  default ~N      # new messages - Green
+color index         color2  default ~U      # unread messages - Green
 color index         color1  default ~F      # flagged - Red
 color index         color13 default ~T      # tagged - Pink
 color index         color1  default ~D      # deleted - Red
 color attachment    color5  default         # attachments - Pink
-color signature     color8  default         # signatures - Surface 2
+color signature     color8  default         # signatures - Surface2
 color search        color4  default         # search highlight - Blue
 
 color indicator     default color8          # highlighted message
 color error         color1  default         # errors - Red
-color status        color7  color8          # status line - Text on Surface 2
+color status        color7  color8          # status line - Text on Surface2
 color tree          color15 default         # thread tree arrows
 color tilde         color15 default         # blank line padding
 
@@ -108,6 +130,7 @@ color body  color4 default  "(^|[[:space:]])[*][^[:space:]]+[*]([[:space:]]|$)" 
 color body  color4 default  "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)" # _underline_
 color body  color4 default  "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)" # /italic/
 
+color index_collapsed   color3  default
 color sidebar_flagged   color1  default
 color sidebar_new       color10 default
 color sidebar_highlight default color8

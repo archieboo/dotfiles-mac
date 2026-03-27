@@ -1,0 +1,17 @@
+[database]
+path=/Users/chao/Mails
+
+[user]
+name=Chao Dai
+primary_email=daichao@gmail.com
+other_email=bajia@me.com
+
+[new]
+tags=new
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true

@@ -1,1 +1,11 @@
 text/html; w3m -I %{charset} -T text/html %s; copiousoutput
+image/*; open %s; needsterminal
+application/pdf; open %s; needsterminal
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; open %s; needsterminal
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; open %s; needsterminal
+application/vnd.openxmlformats-officedocument.presentationml.presentation; open %s; needsterminal
+application/msword; open %s; needsterminal
+application/vnd.ms-excel; open %s; needsterminal
+application/vnd.ms-powerpoint; open %s; needsterminal
+text/csv; open %s; needsterminal
+text/calendar; open %s; needsterminal

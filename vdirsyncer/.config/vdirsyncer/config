@@ -1,0 +1,19 @@
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+[pair icloud_contacts]
+a = "icloud_contacts_local"
+b = "icloud_contacts_remote"
+collections = ["from b"]
+conflict_resolution = "b wins"
+
+[storage icloud_contacts_local]
+type = "filesystem"
+path = "~/.local/share/vdirsyncer/icloud_contacts/"
+fileext = ".vcf"
+
+[storage icloud_contacts_remote]
+type = "carddav"
+url = "https://contacts.icloud.com/"
+username = "bajia@me.com"
+password.fetch = ["command", "security", "find-internet-password", "-s", "imap.mail.me.com", "-a", "bajia@me.com", "-w"]

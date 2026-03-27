@@ -7,11 +7,11 @@ set folder    = "~/Mails/iCloud"
 set spoolfile = "+INBOX"
 set postponed = "+Drafts"
 set record    = "+Sent"
-set trash     = "+Trash"
 
 set sendmail = "msmtp --account=icloud"
 
 unmailboxes *
+source ~/.config/neomutt/notmuch
 named-mailboxes "iCloud/INBOX"   +INBOX
 named-mailboxes "iCloud/Sent"    +Sent
 named-mailboxes "iCloud/Drafts"  +Drafts
