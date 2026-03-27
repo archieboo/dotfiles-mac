@@ -53,7 +53,7 @@ local options = {
   scrolloff = 8, -- Minimal number of screen lines to keep above and below the cursor.
   sidescrolloff = 0, -- Minimal number of screen columns to keep to the left and right of the cursor.
   title = true, -- set the title of window to the value of the titlestring
-  winbar = '%f', -- display the filename in the window titlebar
+  -- winbar handled by dropbar.nvim
   list = true, -- sets how nvim display white spaces, see :help 'list' and :help 'listchars'
   listchars = { tab = '» ', trail = '·', nbsp = '␣' }, -- sets the characters to be displayed with 'list' option
   spell = false, -- turn off spell checking

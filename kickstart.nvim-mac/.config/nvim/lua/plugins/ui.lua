@@ -1,22 +1,15 @@
 return {
-  { -- or show symbols in the current file as breadcrumbs
+  {
     'Bekaboo/dropbar.nvim',
-    enabled = false,
-    -- enabled = function()
-    --   return vim.fn.has 'nvim-0.10' == 1
-    -- end,
-    dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim',
-    },
+    dependencies = { 'nvim-telescope/telescope-fzf-native.nvim' },
     config = function()
-      -- turn off global option for windowline
       vim.opt.winbar = nil
       vim.keymap.set('n', '<leader>ls', require('dropbar.api').pick, { desc = '[s]ymbols' })
     end,
   },
-  { -- filetree
+
+  {
     'nvim-tree/nvim-tree.lua',
-    enabled = true,
     keys = {
       { '<leader>b', ':NvimTreeToggle<cr>', desc = 'toggle nvim-tree' },
     },
@@ -27,74 +20,91 @@ return {
           symlink_destination = false,
         },
         view = {
-          float = {
-            enable = false,
-          },
+          float = { enable = false },
         },
         filters = {
           dotfiles = true,
-          custom = {
-            '_freeze',
-            'docs',
-            '.*logs.*',
-          },
+          custom = { '_freeze', 'docs', '.*logs.*' },
         },
         filesystem_watchers = {
-          ignore_dirs = {
-            'code',
-            'data',
-            '.*log.*',
-            '^_.+',
-            '\\..+',
-          },
+          ignore_dirs = { 'code', 'data', '.*log.*', '^_.+', '\\..+' },
         },
-        update_focused_file = {
-          enable = false,
-        },
+        update_focused_file = { enable = false },
         git = {
           enable = true,
           ignore = false,
           timeout = 500,
         },
-        diagnostics = {
-          enable = true,
+        diagnostics = { enable = true },
+      }
+    end,
+  },
+
+  {
+    'stevearc/oil.nvim',
+    dependencies = { 'echasnovski/mini.icons' },
+    opts = {
+      view_options = { show_hidden = true },
+    },
+  },
+
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'auto',
+          icons_enabled = true,
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { { 'filename', path = 1 } }, -- relative path
+          lualine_x = {
+            {
+              function()
+                local clients = vim.lsp.get_clients { bufnr = 0 }
+                if #clients == 0 then return '' end
+                local names = {}
+                for _, c in ipairs(clients) do
+                  table.insert(names, c.name)
+                end
+                return ' ' .. table.concat(names, ', ')
+              end,
+            },
+            'encoding',
+            'filetype',
+          },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
+        },
+        inactive_sections = {
+          lualine_c = { { 'filename', path = 1 } },
+          lualine_x = { 'location' },
         },
       }
     end,
   },
+
   {
-    'stevearc/oil.nvim',
-    -- Optional dependencies
-    dependencies = { 'echasnovski/mini.icons' },
-    opts = {
-      view_options = {
-        show_hidden = true,
-      },
-    },
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    enabled = false,
-    opts = {
-      options = {
-        theme = 'auto',
-        icons_enabled = true,
-      },
-    },
-  },
-  { -- make window bordoers colorful
     'nvim-zh/colorful-winsep.nvim',
-    enabled = false,
     event = { 'WinLeave' },
     config = function()
-      require('colorful-winsep').setup()
+      require('colorful-winsep').setup {
+        highlight = '#cba6f7',
+        interval = 30,
+        no_exec_files = { 'TelescopePrompt', 'mason', 'lazy', 'NvimTree', 'noice' },
+      }
     end,
   },
-  
+
   {
     'OXY2DEV/markview.nvim',
-    enabled = true,
-    lazy = true, -- Recommended
+    lazy = true,
     ft = { 'markdown', 'rmd', 'quarto' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
@@ -102,9 +112,7 @@ return {
     },
     opts = {
       norg = { enable = false },
-      preview = {
-        icon_provider = 'devicons',
-      },
+      preview = { icon_provider = 'devicons' },
       markdown = {
         headings = {
           enable = true,
@@ -115,49 +123,28 @@ return {
           heading_5 = { icon = '󰲩 ' },
           heading_6 = { icon = '󰲫 ' },
         },
-        code_blocks = {
-          label_direction = 'left',
-        },
-        list_items = {
-          enable = false,
-        },
-        metadata_minus = {
-          enable = true,
-        },
-        reference_definitions = {
-          enable = true,
-        },
+        code_blocks = { label_direction = 'left' },
+        list_items = { enable = false },
+        metadata_minus = { enable = true },
+        reference_definitions = { enable = true },
       },
       markdown_inline = {
-        footnotes = {
-          enable = false,
-        },
+        footnotes = { enable = false },
       },
     },
   },
 
-  { -- fancier terminal
+  {
     'akinsho/toggleterm.nvim',
     opts = {},
-    -- config = function()
-    -- local trim_spaces = true
-    -- vim.keymap.set('v', '<leader>tl', function()
-    --   require('toggleterm').send_lines_to_terminal('single_line', trim_spaces, { args = vim.v.count })
-    -- end)
-    -- vim.keymap.set('v', '<leader>tb', function()
-    --   require('toggleterm').send_lines_to_terminal('visual_selection', trim_spaces, { args = vim.v.count })
-    -- end)
-    -- end,
   },
+
   {
     'folke/noice.nvim',
-    enabled = true,
     event = 'VeryLazy',
-    opts = {},
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      { 'MunifTanjim/nui.nvim', module = 'nui' },
-      { 'rcarriga/nvim-notify', module = 'notify' },
+      { 'MunifTanjim/nui.nvim' },
+      { 'rcarriga/nvim-notify' },
     },
     config = function()
       require('noice').setup {
@@ -169,47 +156,30 @@ return {
         },
         background_colour = '#ace1af',
         cmdline = {
-          enabled = true,
           view = 'cmdline_popup',
         },
-        messages = {
-          enabled = true,
-        },
-        popupmenu = {
-          enabled = true,
-        },
-        notify = {
-          enabled = true,
-        },
         lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
             ['vim.lsp.util.stylize_markdown'] = true,
-            -- ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
           },
           hover = {
             enabled = true,
             silent = false,
-            view = "hover",
-            opts = {},
-          }
+            view = 'hover',
+          },
         },
         presets = {
-          bottom_search = false, -- use a classic bottom cmdline for search
-          -- command_palette = true, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
+          bottom_search = false,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = true,
         },
       }
     end,
   },
 
-
-  -- UI configuration as a separate table inside the returned table
   ui = {
-    -- If you are using a Nerd Font, set icons to an empty table to use the default lazy.nvim Nerd Font icons
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
