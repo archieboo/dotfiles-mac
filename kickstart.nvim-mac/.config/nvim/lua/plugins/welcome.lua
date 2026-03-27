@@ -1,6 +1,10 @@
 return {
   {
     'goolord/alpha-nvim',
+    event = 'VimEnter',
+    cond = function()
+      return vim.fn.argc() == 0 and vim.o.filetype ~= 'gitcommit'
+    end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local alpha = require 'alpha'

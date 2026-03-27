@@ -5,14 +5,14 @@ return {
   { 'numToStr/Comment.nvim', opts = {} },
   { -- format things as tables
     'godlygeek/tabular',
+    cmd = { 'Tabularize' },
   },
 
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {
-    },
+    opts = {},
   },
 
   { -- Collection of various small independent plugins/modules
@@ -50,7 +50,6 @@ return {
     version = '*',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      vim.opt.termguicolors = true
       require('bufferline').setup {
         options = {
           mode = 'buffers',
@@ -65,6 +64,7 @@ return {
   },
   {
     'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     config = function()
       require('nvim-autopairs').setup {}
       require('nvim-autopairs').remove_rule '`'
@@ -73,7 +73,6 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    opts = {},
     config = function()
       local highlight = {
         'RainbowRed',
@@ -108,7 +107,6 @@ return {
   },
   {
     'RRethy/vim-illuminate',
-    enabled = true,
     config = function()
       require 'illuminate'
     end,
@@ -118,17 +116,17 @@ return {
     event = 'VeryLazy',
     ---@type Flash.Config
     opts = {},
-  -- stylua: ignore
     keys = {
-    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end,             desc = 'Flash' },
+      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end,        desc = 'Flash Treesitter' },
+      { 'r', mode = 'o',               function() require('flash').remote() end,             desc = 'Remote Flash' },
+      { 'R', mode = { 'o', 'x' },      function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+      { '<c-s>', mode = { 'c' },        function() require('flash').toggle() end,            desc = 'Toggle Flash Search' },
     },
   },
   {
     'derektata/lorem.nvim',
+    cmd = { 'Lorem' },
     config = function()
       require('lorem').opts {
         sentenceLength = 'mixedLong',
