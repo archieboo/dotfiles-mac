@@ -57,7 +57,7 @@ return {
       require('bufferline').setup {
         options = {
           mode = 'buffers',
-          separator_style = 'slant',
+          separator_style = 'thin',
           indicator = {
             icon = ' 🌈',
             style = 'icon',
