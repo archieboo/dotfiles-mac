@@ -1,11 +1,16 @@
 # ============================================================
 # General settings
 # ============================================================
-set status_format = "[ %f ] [%r%m msgs%?n? %n new?%?d? %d del?%?t? %t tag?] %> %?p?%p postponed? "
+set mailcap_path = ~/.config/neomutt/mailcap
+auto_view text/html
+alternative_order text/plain text/html
+
+set status_format = " %f  ·  %r%m msgs%?n?  %n new?%?d?  %d del?%?t?  %t tag? %>  %?p?%p postponed  ? "
 set mail_check    = 60
 set timeout       = 10
 set sort          = threads
 set sort_aux      = reverse-last-date-received
+set collapse_all  = yes
 set pager_index_lines = 10
 set pager_stop    = yes
 set markers       = no
@@ -21,10 +26,10 @@ set certificate_file = "~/.cache/neomutt/certificates"
 # ============================================================
 # Sidebar
 # ============================================================
-set sidebar_visible   = yes
+set sidebar_visible   = no
 set sidebar_width     = 30
-set sidebar_format    = "%B%?F? [%F]?%* %?N?%N/?%S"
-set sidebar_short_path = yes
+set sidebar_format    = "%D%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path = no
 set sidebar_delim_chars = "/"
 
 bind index,pager \Ck sidebar-prev
@@ -35,6 +40,8 @@ bind index,pager \Cb sidebar-toggle-visible
 # ============================================================
 # Account switching
 # ============================================================
+macro index,pager ,b "<enter-command>set wait_key=no<enter><pipe-message>~/.config/neomutt/open-in-browser.sh<enter><enter-command>set wait_key=yes<enter>" "Open HTML in browser"
+
 macro index ,i '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/icloud<enter><change-folder>!<enter>'  "Switch to iCloud"
 macro index ,g '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'   "Switch to Gmail"
 
@@ -44,6 +51,12 @@ macro index ,g '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/g
 source ~/.config/neomutt/accounts/gmail
 
 # ============================================================
+# Headers
+# ============================================================
+ignore *
+unignore from: to: cc: bcc: date: subject: reply-to:
+
+# ============================================================
 # Key bindings
 # ============================================================
 bind index g        noop
@@ -51,6 +64,7 @@ bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
 bind index <tab>    sync-mailbox
+macro index ,s "<enter-command>set wait_key=no<enter><shell-escape>mbsync -a &>/dev/null &<enter><enter-command>set wait_key=yes<enter>" "sync all mail"
 bind index <space>  collapse-thread
 
 bind pager j  next-line
@@ -73,7 +87,7 @@ color search        color4  default         # search highlight - Blue
 
 color indicator     default color8          # highlighted message
 color error         color1  default         # errors - Red
-color status        color15 default         # status line - Subtext 0
+color status        color7  color8          # status line - Text on Surface 2
 color tree          color15 default         # thread tree arrows
 color tilde         color15 default         # blank line padding
 

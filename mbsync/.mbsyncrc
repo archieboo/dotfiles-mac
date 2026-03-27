@@ -19,11 +19,11 @@ Inbox ~/Mails/iCloud/INBOX
 Channel icloud
 Far :icloud-remote:
 Near :icloud-local:
-Patterns *
+Patterns INBOX Drafts Sent Junk Trash
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 6000
+MaxMessages 200
 ExpireUnread yes
 
 
@@ -48,9 +48,9 @@ Inbox ~/Mails/Gmail/INBOX
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
-Patterns *
+Patterns INBOX "Sent Messages" "Deleted Messages" Drafts "[Gmail]/Spam"
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 6000
+MaxMessages 200
 ExpireUnread yes
