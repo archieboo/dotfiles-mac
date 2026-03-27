@@ -9,11 +9,14 @@ set postponed = "+Drafts"
 set record    = "+Sent"
 
 set sendmail = "msmtp --account=icloud"
+set trash    = "+Trash"
 
 unmailboxes *
 source ~/.config/neomutt/notmuch
-named-mailboxes "iCloud/INBOX"   +INBOX
-named-mailboxes "iCloud/Sent"    +Sent
-named-mailboxes "iCloud/Drafts"  +Drafts
-named-mailboxes "iCloud/Trash"   +Trash
-named-mailboxes "iCloud/Junk"    +Junk
+named-mailboxes "  ·················" "~/Mails/.separator"
+named-mailboxes "󰀵 iCloud"          +INBOX
+named-mailboxes "  󰀵 INBOX"       +INBOX
+named-mailboxes "  󰒊 Sent"        +Sent
+named-mailboxes "  󰏫 Drafts"      +Drafts
+named-mailboxes "  󰩺 Trash"       +Trash
+named-mailboxes "  󰉀 Junk"        +Junk

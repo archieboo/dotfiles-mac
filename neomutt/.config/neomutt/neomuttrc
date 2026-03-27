@@ -7,9 +7,10 @@ auto_view text/html
 alternative_order text/plain text/html
 
 set status_format = " %f  ·  %r%m msgs%?n?  %n new?%?d?  %d del?%?t?  %t tag? %>  %?p?%p postponed  ? "
-set index_format  = "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %?M?[%M] ?%s"
-set mail_check    = 60
-set timeout       = 10
+set index_format  = "%4C %?F?󰋙F& ?%?N?●N& ?%?r?↩R& ?%?y?󰜲G& ?  %{%b %d} %-15.15L  %?X?📎 & ?%?M?[📚%M] ?%s"
+set mail_check       = 60
+set mail_check_stats = yes
+set timeout          = 10
 set sort          = threads
 set sort_aux      = reverse-last-date-received
 set collapse_all  = yes
@@ -29,9 +30,9 @@ set certificate_file = "~/.cache/neomutt/certificates"
 # ============================================================
 # Sidebar
 # ============================================================
-set sidebar_visible   = no
+set sidebar_visible   = yes
 set sidebar_width     = 30
-set sidebar_format    = "%D%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_format    = "%D %* %?N?󰂜 %N/?%S%?F?  %F?"
 set sidebar_short_path = no
 set sidebar_delim_chars = "/"
 
@@ -60,7 +61,7 @@ set nm_db_limit    = 500
 source ~/.config/neomutt/notmuch
 
 macro index ,n "<vfolder-from-query>" "Search mail with notmuch"
-macro index ,u "<change-vfolder>notmuch:///Users/chao/Mails?query=tag:inbox<enter>" "Go to unified inbox"
+macro index ,u "<change-vfolder>notmuch:///Users/chao/Mails?query=tag:inbox<enter>" "Go to combined inbox"
 
 # When replying from unified inbox, detect which account received the message
 reply-hook . "set sendmail='msmtp --account=gmail'; set from='daichao@gmail.com'"
@@ -99,13 +100,20 @@ bind pager G  bottom
 # Colors (Catppuccin Mocha)
 # ============================================================
 color normal        default default
-color index         color2  default ~U      # unread messages - Green
-color index         color1  default ~F      # flagged - Red
+color index         color6  default ~Q      # replied - Teal
+color index         color4  default ~U      # unread - Blue
+color index         color12 default ~N      # new (never seen) - Bright Blue
+color index         color1  default ~F      # flagged - Red (overrides above)
 color index         color13 default ~T      # tagged - Pink
-color index         color1  default ~D      # deleted - Red
-color attachment    color5  default         # attachments - Pink
+color index         color0  default ~D      # deleted - Near invisible
+color attachment    color5  default         # attachments - Mauve
 color signature     color8  default         # signatures - Surface2
 color search        color4  default         # search highlight - Blue
+
+color index_number  color8  default         # message number - Gray
+color index_date    color8  default         # date - Gray
+color index_author  color7  default         # sender - Soft white
+color index_subject default default         # subject - default bright
 
 color indicator     default color8          # highlighted message
 color error         color1  default         # errors - Red
@@ -113,16 +121,19 @@ color status        color7  color8          # status line - Text on Surface2
 color tree          color15 default         # thread tree arrows
 color tilde         color15 default         # blank line padding
 
-color hdrdefault    color13 default
-color header        color13 default "^From:"
-color header        color13 default "^Subject:"
+color hdrdefault              color8  default                   # other headers - Gray
+color header                  color12 default "^From:"          # From - Bright Blue
+color header                  color6  default "^To:"            # To - Teal
+color header                  color6  default "^Cc:"            # Cc - Teal
+color header                  color8  default "^Date:"          # Date - Gray
+color header bold              color13 default "^Subject:"      # Subject - Pink bold
 
-color quoted        color15 default
-color quoted1       color7  default
+color quoted        color7  default
+color quoted1       color6  default
 color quoted2       color8  default
-color quoted3       color0  default
-color quoted4       color0  default
-color quoted5       color0  default
+color quoted3       color8  default
+color quoted4       color8  default
+color quoted5       color8  default
 
 color body  color2 default  "[.+_a-zA-Z0-9-]+@[.a-zA-Z0-9-]+"              # emails
 color body  color2 default  "(https?|ftp)://[.,/%~_:?&=#a-zA-Z0-9-]+"      # URLs

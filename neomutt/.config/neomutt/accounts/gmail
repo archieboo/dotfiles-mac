@@ -9,11 +9,14 @@ set postponed = "+[Gmail]/Drafts"
 set record    = "+[Gmail]/Sent Mail"
 
 set sendmail = "msmtp --account=gmail"
+set trash    = "+[Gmail]/Trash"
 
 unmailboxes *
 source ~/.config/neomutt/notmuch
-named-mailboxes "Gmail/INBOX"    +INBOX
-named-mailboxes "Gmail/Sent"     +"[Gmail]/Sent Mail"
-named-mailboxes "Gmail/Drafts"   +"[Gmail]/Drafts"
-named-mailboxes "Gmail/Trash"    +"[Gmail]/Trash"
-named-mailboxes "Gmail/Spam"     +"[Gmail]/Spam"
+named-mailboxes "  ·················" "~/Mails/.separator"
+named-mailboxes "󰊭 Gmail"          +INBOX
+named-mailboxes "  󰊭 INBOX"       +INBOX
+named-mailboxes "  󰒊 Sent"        +"[Gmail]/Sent Mail"
+named-mailboxes "  󰏫 Drafts"      +"[Gmail]/Drafts"
+named-mailboxes "  󰩺 Trash"       +"[Gmail]/Trash"
+named-mailboxes "  󰉀 Spam"        +"[Gmail]/Spam"
