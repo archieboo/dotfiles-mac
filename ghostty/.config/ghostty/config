@@ -10,7 +10,7 @@ bell-features = no-system
 #------- Appearance -----#
 theme = Catppuccin Mocha
 
-background = grey9
+# background = grey9
 background-opacity = .9
 background-blur = 20
 
