@@ -322,6 +322,7 @@ wk.add({
   { '<leader>fM', '<cmd>Telescope man_pages<cr>', desc = '[M]an pages' },
   { '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>', desc = 'current [b]uffer fuzzy find' },
   { '<leader>fc', '<cmd>Telescope git_commits<cr>', desc = 'git [c]ommits' },
+  { '<leader>fd', '<cmd>Telescope diagnostics<cr>', desc = '[d]iagnostics' },
   { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = '[f]iles' },
   { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = '[g]rep' },
   { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = '[h]elp' },
@@ -329,8 +330,13 @@ wk.add({
   { '<leader>fk', '<cmd>Telescope keymaps<cr>', desc = '[k]eymaps' },
   { '<leader>fl', '<cmd>Telescope loclist<cr>', desc = '[l]oclist' },
   { '<leader>fm', '<cmd>Telescope marks<cr>', desc = '[m]arks' },
+  { '<leader>fo', function() require('telescope.builtin').live_grep { grep_open_files = true, prompt_title = 'Live Grep in Open Files' } end, desc = '[o]pen files grep' },
   { '<leader>fq', '<cmd>Telescope quickfix<cr>', desc = '[q]uickfix' },
+  { '<leader>fr', '<cmd>Telescope resume<cr>', desc = '[r]esume' },
+  { '<leader>fs', '<cmd>Telescope builtin<cr>', desc = '[s]elect telescope' },
   { '<leader>fu', '<cmd>Telescope buffers<cr>', desc = 'b[u]ffers' },
+  { '<leader>fw', '<cmd>Telescope grep_string<cr>', desc = 'current [w]ord' },
+  { '<leader>f.', '<cmd>Telescope oldfiles<cr>', desc = 'recent [.] files' },
 
   -- LSP keys
   { '<leader>l', group = '[l]anguage/lsp' },

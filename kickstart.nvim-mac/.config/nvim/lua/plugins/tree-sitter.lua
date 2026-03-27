@@ -88,7 +88,7 @@ return {
       },
     },
 
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       local ts = require 'nvim-treesitter'
       ---@diagnostic disable-next-line: missing-fields
