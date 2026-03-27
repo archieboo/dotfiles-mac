@@ -4,22 +4,17 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.color_scheme = "tokyonight_moon"
+config.color_scheme = "Catppuccin Macchiato"
+config.colors = { cursor_bg = "#f4dbd6", cursor_border = "#f4dbd6" }
 
 config.default_cursor_style = "BlinkingBlock"
 config.automatically_reload_config = true
 
 -- fonts
 config.font_size = 14
--- config.dpi = 144.0
 config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
 config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
 config.font_rules = {
-	{
-		intensity = "Normal",
-		italic = false,
-		font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Regular", style = "Normal" }),
-	},
 	{
 		intensity = "Normal",
 		italic = true,
@@ -54,18 +49,8 @@ config.hide_tab_bar_if_only_one_tab = true
 -- scrollbar
 config.enable_scroll_bar = true
 
--- my coolnight colorscheme:
-config.colors = {
-	foreground = "#CBE0F0",
-	background = "#011423",
-	cursor_bg = "#47FF9C",
-	cursor_border = "#47FF9C",
-	cursor_fg = "#011423",
-	selection_bg = "#033259",
-	selection_fg = "#CBE0F0",
-	ansi = { "#214969", "#c83232", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-	brights = { "#214969", "#c83232", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
-}
+-- inactive pane dimming
+config.inactive_pane_hsb = { saturation = 0.7, brightness = 0.6 }
 
 -- keymapping
 config.keys = {
@@ -79,8 +64,6 @@ config.keys = {
 
 --windows
 config.window_decorations = "RESIZE"
--- config.window_background_opacity = 0.8
--- config.macos_window_background_blur = 50
 
 config.hyperlink_rules = {
 	-- Matches: a URL in parens: (URL)
@@ -109,10 +92,6 @@ config.hyperlink_rules = {
 	},
 	-- Then handle URLs not wrapped in brackets
 	{
-		-- Before
-		--regex = '\\b\\w+://\\S+[)/a-zA-Z0-9-]+',
-		--format = '$0',
-		-- After
 		regex = "[^(]\\b(\\w+://\\S+[)/a-zA-Z0-9-]+)",
 		format = "$1",
 		highlight = 1,
@@ -127,7 +106,7 @@ config.hyperlink_rules = {
 config.window_padding = {
 	left = 3,
 	right = 3,
-	top = 0,
+	top = 5,
 	bottom = 0,
 }
 
@@ -136,10 +115,7 @@ config.background = {
 	{
 		source = {
 			File = {
-				path = "/Users/"
-					.. os.getenv("USER")
-					-- .. "/.config/wezterm/ingmar-h-HZksGaLPJA4-unsplash.jpg",
-					.. "/.config/wezterm/archieprofile.jpg",
+				path = wezterm.home_dir .. "/.config/wezterm/archieprofile.jpg",
 			},
 		},
 		hsb = {
@@ -152,11 +128,11 @@ config.background = {
 	},
 	{
 		source = {
-			Color = "#291B10",
+			Color = "#24273A",
 		},
 		width = "100%",
 		height = "100%",
-		opacity = .5,
+		opacity = .6,
 	},
 }
 
