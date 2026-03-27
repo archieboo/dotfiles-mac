@@ -10,7 +10,7 @@ config.default_cursor_style = "BlinkingBlock"
 config.automatically_reload_config = true
 
 -- fonts
-config.font_size = 12
+config.font_size = 14
 -- config.dpi = 144.0
 config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
 config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
