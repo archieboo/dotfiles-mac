@@ -9,44 +9,44 @@ P = vim.print
 vim.g['quarto_is_r_mode'] = nil
 vim.g['reticulate_running'] = false
 
-local nmap = function(key, effect)
-  vim.keymap.set('n', key, effect, { silent = true, noremap = true })
+local nmap = function(key, effect, desc)
+  vim.keymap.set('n', key, effect, { silent = true, noremap = true, desc = desc })
 end
 
-local vmap = function(key, effect)
-  vim.keymap.set('v', key, effect, { silent = true, noremap = true })
+local vmap = function(key, effect, desc)
+  vim.keymap.set('v', key, effect, { silent = true, noremap = true, desc = desc })
 end
 
-local imap = function(key, effect)
-  vim.keymap.set('i', key, effect, { silent = true, noremap = true })
+local imap = function(key, effect, desc)
+  vim.keymap.set('i', key, effect, { silent = true, noremap = true, desc = desc })
 end
 
-local cmap = function(key, effect)
-  vim.keymap.set('c', key, effect, { silent = true, noremap = true })
+local cmap = function(key, effect, desc)
+  vim.keymap.set('c', key, effect, { silent = true, noremap = true, desc = desc })
 end
 
 -- Move between windows using <ctrl> direction
-nmap('<C-j>', '<C-W>j')
-nmap('<C-k>', '<C-W>k')
-nmap('<C-h>', '<C-W>h')
-nmap('<C-l>', '<C-W>l')
+nmap('<C-j>', '<C-W>j', 'window down')
+nmap('<C-k>', '<C-W>k', 'window up')
+nmap('<C-h>', '<C-W>h', 'window left')
+nmap('<C-l>', '<C-W>l', 'window right')
 
 -- Resize window using <shift> arrow keys
-nmap('<S-Up>', '<cmd>resize +2<CR>')
-nmap('<S-Down>', '<cmd>resize -2<CR>')
-nmap('<S-Left>', '<cmd>vertical resize -2<CR>')
-nmap('<S-Right>', '<cmd>vertical resize +2<CR>')
+nmap('<S-Up>', '<cmd>resize +2<CR>', 'increase window height')
+nmap('<S-Down>', '<cmd>resize -2<CR>', 'decrease window height')
+nmap('<S-Left>', '<cmd>vertical resize -2<CR>', 'decrease window width')
+nmap('<S-Right>', '<cmd>vertical resize +2<CR>', 'increase window width')
 
-nmap('Q', '<Nop>')
+nmap('Q', '<Nop>', 'disable Q')
 
 -- move in command line
-cmap('<C-a>', '<Home>')
+cmap('<C-a>', '<Home>', 'go to line start')
 
 -- exit insert mode with jk
-imap('jk', '<esc>')
+imap('jk', '<esc>', 'exit insert mode')
 
 -- exit terminal mode with jk
-vim.keymap.set('t', 'jk', '<C-\\><C-n>')
+vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'exit terminal mode' })
 
 --- Send code to terminal with vim-slime
 --- If an R terminal has been opend, this is in r_mode
@@ -102,25 +102,25 @@ local function send_region()
   end
 end
 
-vmap('>', '>gv')
-vmap('<', '<gv')
+vmap('>', '>gv', 'indent and reselect')
+vmap('<', '<gv', 'dedent and reselect')
 
 -- center after search and jumps
-nmap('n', 'nzz')
-nmap('<c-d>', '<c-d>zz')
-nmap('<c-u>', '<c-u>zz')
+nmap('n', 'nzz', 'next match (centered)')
+nmap('<c-d>', '<c-d>zz', 'scroll down (centered)')
+nmap('<c-u>', '<c-u>zz', 'scroll up (centered)')
 
 -- move between splits and tabs
-nmap('<c-h>', '<c-w>h')
-nmap('<c-l>', '<c-w>l')
-nmap('<c-j>', '<c-w>j')
-nmap('<c-k>', '<c-w>k')
+nmap('<c-h>', '<c-w>h', 'window left')
+nmap('<c-l>', '<c-w>l', 'window right')
+nmap('<c-j>', '<c-w>j', 'window down')
+nmap('<c-k>', '<c-w>k', 'window up')
 
 -- Move between tabs, note bufferline uses bnext and bprev
 -- nmap('H', '<cmd>tabprevious<cr>')
 -- nmap('L', '<cmd>tabnext<cr>')
-nmap('H', '<cmd>bprev<cr>')
-nmap('L', '<cmd>bnext<cr>')
+nmap('H', '<cmd>bprev<cr>', 'prev buffer')
+nmap('L', '<cmd>bnext<cr>', 'next buffer')
 
 local function toggle_light_dark_theme()
   if vim.o.background == 'light' then
@@ -176,20 +176,6 @@ wk.add({
   { '<m-i>', insert_r_chunk, desc = 'r code chunk' },
   { '[q', ':silent cprev<cr>', desc = '[q]uickfix prev' },
   { ']q', ':silent cnext<cr>', desc = '[q]uickfix next' },
-  {
-    ']t',
-    function()
-      require('todo-comments').jump_next()
-    end,
-    desc = 'next [t]odo comment',
-  },
-  {
-    '[t',
-    function()
-      require('todo-comments').jump_prev()
-    end,
-    desc = 'previous [t]odo comment',
-  },
   { 'gN', 'Nzzzv', desc = 'center search' },
   { 'gf', ':e <cfile><CR>', desc = 'edit file' },
   { 'gl', '<c-]>', desc = 'open help link' },
@@ -289,8 +275,8 @@ local function goto_previous_code_chunk()
   end
 end
 
-vim.keymap.set('n', '[[', goto_previous_code_chunk, { noremap = true, silent = true })
-vim.keymap.set('n', ']]', goto_next_code_chunk, { noremap = true, silent = true })
+vim.keymap.set('n', '[[', goto_previous_code_chunk, { noremap = true, silent = true, desc = 'prev code chunk' })
+vim.keymap.set('n', ']]', goto_next_code_chunk, { noremap = true, silent = true, desc = 'next code chunk' })
 
 -- send code with Enter and leader Enter
 -- vmap('<cr>', '<Plug>SlimeRegionSend')
@@ -365,24 +351,14 @@ wk.add({
   { 'K', ':Lspsaga hover_doc<cr>', desc = 'Documentation' },
 
   { '<leader>o', group = '[o]tter & c[o]de' },
-  { '<leader>oa', require('otter').activate, desc = 'otter [a]ctivate' },
   { '<leader>ob', insert_bash_chunk, desc = '[b]ash code chunk' },
   { '<leader>oc', 'O# %%<cr>', desc = 'magic [c]omment code chunk # %%' },
-  { '<leader>od', require('otter').activate, desc = 'otter [d]eactivate' },
   { '<leader>op', insert_py_chunk, desc = '[p]ython code chunk' },
   { '<leader>or', insert_r_chunk, desc = '[r] code chunk' },
   { '<leader>ol', '<cmd>Oil --float<cr>', desc = '[o]pen oi[l]' },
 
   { '<leader>q', group = '[q]uarto' },
-  {
-    '<leader>qE',
-    function()
-      require('otter').export(true)
-    end,
-    desc = '[E]xport with overwrite',
-  },
   { '<leader>qa', ':QuartoActivate<cr>', desc = '[a]ctivate' },
-  { '<leader>qe', require('otter').export, desc = '[e]xport' },
   { '<leader>qh', ':QuartoHelp ', desc = '[h]elp' },
   { '<leader>qp', ":lua require'quarto'.quartoPreview()<cr>", desc = '[p]review' },
   { '<leader>qq', ":lua require'quarto'.quartoClosePreview()<cr>", desc = '[q]uiet preview' },
@@ -400,24 +376,6 @@ wk.add({
 
   { '<leader>mt', ':Markview toggleAll<cr>', desc = '[m]arkview [t]oggal all chunks' },
 
-  {
-    mode = 'v',
-    '<leader>tbb',
-    function()
-      local trim_spaces = true
-      require('toggleterm').send_lines_to_terminal('visual_selection', trim_spaces, { args = vim.v.count })
-    end,
-    desc = 'Send [bb]locks of visual selection to toggle terminal',
-  },
-  {
-    mode = { 'n', 'v' },
-    '<leader>tll',
-    function()
-      local trim_spaces = true
-      require('toggleterm').send_lines_to_terminal('single_line', trim_spaces, { args = vim.v.count })
-    end,
-    desc = 'Send single [ll]ine under cursor to toggle terminal',
-  },
 
   { '<leader>v', group = '[v]im' },
   { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },

@@ -4,26 +4,27 @@ return {
     'quarto-dev/quarto-nvim',
     ft = { 'quarto' },
     dev = false,
-    opts = {
-      lspFeatures = {
-        languages = {
-          'r',
-          'python',
-          'bash',
-          'html',
-        },
-      },
-      codeRunner = {
-        enabled = true,
-        default_method = 'slime',
-      },
-    },
     dependencies = {
       -- for language features in code cells
       -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
       'jmbuhr/otter.nvim',
     },
+    config = function()
+      require('quarto').setup {
+        lspFeatures = {
+          languages = { 'r', 'python', 'bash', 'html' },
+        },
+        codeRunner = {
+          enabled = true,
+          default_method = 'slime',
+        },
+      }
+      vim.keymap.set('n', '<leader>oa', require('otter').activate, { desc = 'otter [a]ctivate' })
+      vim.keymap.set('n', '<leader>od', require('otter').deactivate, { desc = 'otter [d]eactivate' })
+      vim.keymap.set('n', '<leader>qe', require('otter').export, { desc = '[e]xport to file' })
+      vim.keymap.set('n', '<leader>qE', function() require('otter').export(true) end, { desc = '[E]xport to file (overwrite)' })
+    end,
   },
 
   { -- send code from python/r/qmd documets to a terminal or REPL

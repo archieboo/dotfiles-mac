@@ -136,7 +136,15 @@ return {
 
   {
     'akinsho/toggleterm.nvim',
-    opts = {},
+    config = function()
+      require('toggleterm').setup()
+      vim.keymap.set('v', '<leader>tbb', function()
+        require('toggleterm').send_lines_to_terminal('visual_selection', true, { args = vim.v.count })
+      end, { desc = 'send selection to terminal' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>tll', function()
+        require('toggleterm').send_lines_to_terminal('single_line', true, { args = vim.v.count })
+      end, { desc = 'send line to terminal' })
+    end,
   },
 
   {
