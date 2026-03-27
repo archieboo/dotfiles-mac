@@ -149,29 +149,25 @@ on-mode-changed = []
 
 # automatically move certain app windows to specified workspaces
 # run aerospace list-apps to get app id
-[[on-window-detected]]
-if.app-id = 'com.anthropic.claudefordesktop'
-run = ['move-node-to-workspace A', 'workspace A']
+# [[on-window-detected]]
+# if.app-id = 'com.anthropic.claudefordesktop'
+# run = ['move-node-to-workspace A', 'workspace A']
 
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.dcipmfdnemdookoohhomhagiclfbgimb'
-run = ['move-node-to-workspace A', 'workspace A']
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome.app.dcipmfdnemdookoohhomhagiclfbgimb'
+# run = ['move-node-to-workspace A', 'workspace A']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
 
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace C'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace B'
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.Outlook'
-run = ['move-node-to-workspace M', 'layout accordion']
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome'
+# run = 'move-node-to-workspace C'
+#
+# [[on-window-detected]]
+# if.app-id = 'com.apple.Safari'
+# run = 'move-node-to-workspace B'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
