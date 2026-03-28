@@ -9,7 +9,7 @@ set postponed = "+[Gmail]/Drafts"
 set record    = "+[Gmail]/Sent Mail"
 
 set sendmail = "msmtp --account=gmail"
-set trash    = "+[Gmail]/Trash"
+set trash    = "~/Mails/Gmail/[Gmail]/Trash"
 
 unmailboxes *
 source ~/.config/neomutt/notmuch

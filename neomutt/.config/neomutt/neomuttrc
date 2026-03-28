@@ -71,7 +71,6 @@ reply-hook '~C bajia@me.com' "set sendmail='msmtp --account=icloud'; set from='b
 # Default account
 # ============================================================
 source ~/.config/neomutt/accounts/gmail
-set spoolfile = "notmuch:///Users/chao/Mails?query=tag:inbox"
 
 # ============================================================
 # Headers

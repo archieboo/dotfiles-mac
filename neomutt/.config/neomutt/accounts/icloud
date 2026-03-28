@@ -9,7 +9,7 @@ set postponed = "+Drafts"
 set record    = "+Sent"
 
 set sendmail = "msmtp --account=icloud"
-set trash    = "+Trash"
+set trash    = "~/Mails/iCloud/Trash"
 
 unmailboxes *
 source ~/.config/neomutt/notmuch

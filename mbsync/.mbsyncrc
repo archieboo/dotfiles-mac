@@ -16,15 +16,57 @@ Subfolders Verbatim
 Path ~/Mails/iCloud/
 Inbox ~/Mails/iCloud/INBOX
 
-Channel icloud
-Far :icloud-remote:
-Near :icloud-local:
-Patterns INBOX Drafts Sent Junk Trash
+Channel icloud-inbox
+Far :icloud-remote:INBOX
+Near :icloud-local:INBOX
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 2000
+MaxMessages 3000
 ExpireUnread yes
+
+Channel icloud-sent
+Far :icloud-remote:Sent
+Near :icloud-local:Sent
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 200
+ExpireUnread yes
+
+Channel icloud-drafts
+Far :icloud-remote:Drafts
+Near :icloud-local:Drafts
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 50
+ExpireUnread yes
+
+Channel icloud-trash
+Far :icloud-remote:Trash
+Near :icloud-local:Trash
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 100
+ExpireUnread yes
+
+Channel icloud-junk
+Far :icloud-remote:Junk
+Near :icloud-local:Junk
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 300
+ExpireUnread yes
+
+Group icloud
+Channel icloud-inbox
+Channel icloud-sent
+Channel icloud-drafts
+Channel icloud-trash
+Channel icloud-junk
 
 
 # Gmail (daichao@gmail.com)
@@ -45,12 +87,54 @@ Subfolders Verbatim
 Path ~/Mails/Gmail/
 Inbox ~/Mails/Gmail/INBOX
 
-Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
-Patterns INBOX "[Gmail]/Sent Mail" "[Gmail]/Trash" "[Gmail]/Drafts" "[Gmail]/Spam"
+Channel gmail-inbox
+Far :gmail-remote:INBOX
+Near :gmail-local:INBOX
 Create Near
 Expunge Both
 SyncState *
-MaxMessages 2000
+MaxMessages 3000
 ExpireUnread yes
+
+Channel gmail-sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:"[Gmail]/Sent Mail"
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 200
+ExpireUnread yes
+
+Channel gmail-drafts
+Far :gmail-remote:"[Gmail]/Drafts"
+Near :gmail-local:"[Gmail]/Drafts"
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 50
+ExpireUnread yes
+
+Channel gmail-trash
+Far :gmail-remote:"[Gmail]/Trash"
+Near :gmail-local:"[Gmail]/Trash"
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 100
+ExpireUnread yes
+
+Channel gmail-spam
+Far :gmail-remote:"[Gmail]/Spam"
+Near :gmail-local:"[Gmail]/Spam"
+Create Near
+Expunge Both
+SyncState *
+MaxMessages 300
+ExpireUnread yes
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-sent
+Channel gmail-drafts
+Channel gmail-trash
+Channel gmail-spam
