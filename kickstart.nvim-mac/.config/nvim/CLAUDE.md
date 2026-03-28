@@ -4,6 +4,8 @@
 
 Personal Neovim config based on kickstart.nvim, tailored for data science work (Python, R, Quarto).
 
+Becautious, avoid changes that may break nvim or change existing behavior. If certain modification requires change of exhisting nvim behavior, ask for permission first. 
+
 ## Directory Structure
 
 ```
@@ -81,9 +83,14 @@ ftplugin/
 
 ## Quarto / Data Science Workflow
 
+
 - `<leader>qp` — Quarto preview
 - `<leader><cr>` — Run current code cell (via vim-slime)
 - `<cr>` (visual) — Send selected region to REPL
 - `<m-i>` / `<m-I>` — Insert R / Python code chunk
 - `[[` / `]]` — Jump between code chunks
 - `<leader>ci/cp/cr` — Open ipython / python / R terminal in vsplit
+
+## IGNORE
+
+- Ignore any files outside of `./lua/` unless specifically asked or a specific  step requires you to access files outside of it. 
