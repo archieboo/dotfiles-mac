@@ -340,7 +340,7 @@ wk.add({
       require('telescope.builtin').lsp_references()
     end, desc = 'go to [r]eferences' },
   { '<leader>lo', ':Trouble symbols<cr>', desc = 'symbols [o]utline in buffer' },
-  { mode = { 'n', 'v' }, '<leader>lF', vim.lsp.buf.format, desc = '[F]ormat code' },
+  { mode = { 'n', 'v' }, '<leader>lF', function() require('conform').format({ async = true, lsp_format = 'fallback' }) end, desc = '[F]ormat code' },
 
   { '<leader>o', group = '[o]tter & c[o]de' },
   { '<leader>ob', insert_bash_chunk, desc = '[b]ash code chunk' },

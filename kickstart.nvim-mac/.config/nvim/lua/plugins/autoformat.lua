@@ -1,21 +1,19 @@
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
-    enabled = true,
-    keys = {
-      { '<leader>ft', '<cmd>lua require("conform").format()<cr>', desc = '[f]orma[t]' },
-    },
     config = function()
       require('conform').setup {
         notify_on_error = false,
         -- format_on_save = {
         --   timeout_ms = 500,
-        --   lsp_fallback = true,
+        --   lsp_format = 'fallback',
         -- },
         formatters_by_ft = {
-          lua = { 'mystylua' },
+          lua    = { 'mystylua' },
           python = { 'isort', 'black' },
-          quarto = { 'injected' },
+          r      = { 'styler' },   -- requires R package: install.packages('styler')
+          sh     = { 'shfmt' },
+          quarto = { 'injected' }, -- formats each embedded chunk in its own language
         },
         formatters = {
           mystylua = {
@@ -24,25 +22,16 @@ return {
           },
         },
       }
-      -- Customize the "injected" formatter
+      -- injected: formats embedded code blocks in qmd by language
+      -- lang_to_ext maps treesitter language names to file extensions
+      -- so formatters can identify the language from the temp filename
       require('conform').formatters.injected = {
-        -- Set the options field
         options = {
-          -- Set to true to ignore errors
-          ignore_errors = false,
-          -- Map of treesitter language to file extension
-          -- A temporary file name with this extension will be generated during formatting
-          -- because some formatters care about the filename.
           lang_to_ext = {
-            bash = 'sh',
-            -- latex = 'tex',
-            markdown = 'md',
+            bash   = 'sh',
             python = 'py',
-            r = 'r',
+            r      = 'r',
           },
-          -- Map of treesitter language to formatters to use
-          -- (defaults to the value from formatters_by_ft)
-          lang_to_formatters = {},
         },
       }
     end,
