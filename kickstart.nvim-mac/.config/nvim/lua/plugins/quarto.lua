@@ -3,11 +3,10 @@ return {
     -- for complete functionality (language features)
     'quarto-dev/quarto-nvim',
     ft = { 'quarto' },
-    dev = false,
     dependencies = {
       -- for language features in code cells
       -- configured in lua/plugins/lsp.lua and
-      -- added as a nvim-cmp source in lua/plugins/completion.lua
+      -- added as a source in lua/plugins/autocomplete.lua
       'jmbuhr/otter.nvim',
     },
     config = function()
@@ -27,10 +26,9 @@ return {
     end,
   },
 
-  { -- send code from python/r/qmd documets to a terminal or REPL
+  { -- send code from python/r/qmd documents to a terminal or REPL
     -- like ipython, R, bash
     'jpalardy/vim-slime',
-    dev = false,
     init = function()
       vim.b['quarto_is_python_chunk'] = false
       Quarto_is_in_python_chunk = function()

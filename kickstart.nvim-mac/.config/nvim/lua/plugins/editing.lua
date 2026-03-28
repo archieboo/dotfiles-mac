@@ -30,18 +30,14 @@ return {
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
 
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- require('mini.surround').setup()
-
       require('mini.cursorword').setup()
     end,
   },
-  -- Add/change/delete surrounding delimiter pairs with ease
-  {
+  { -- Add/change/delete surrounding delimiter pairs
+    -- ys{motion}{char}  add surround:    word   →(ysiw))→ (word),   word  →(ysiw")→ "word"
+    -- ds{char}          delete surround: (word) →(ds))→   word,   "word" →(ds")→   word
+    -- cs{old}{new}      change surround: (word) →(cs)")→ "word",  'word' →(cs'`)→  `word`
+    -- note: visual mode S conflicts with flash.nvim treesitter jump
     'kylechui/nvim-surround',
     version = '*',
     event = 'VeryLazy',
