@@ -58,21 +58,18 @@ return {
         },
       },
       {
-        {
-          'folke/lazydev.nvim',
-          ft = 'lua',
-          opts = {
-            library = {
-              { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-            },
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
           },
         },
-        { 'Bilal2453/luvit-meta', lazy = true },
       },
+      { 'Bilal2453/luvit-meta', lazy = true },
       { 'folke/neoconf.nvim', opts = {}, enabled = false },
     },
     config = function()
-      local util = require 'lspconfig.util'
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -141,31 +138,6 @@ return {
         filetypes = { 'js', 'javascript', 'typescript', 'ojs' },
       }
 
-      local function get_quarto_resource_path()
-        local function strsplit(s, delimiter)
-          local result = {}
-          for match in (s .. delimiter):gmatch('(.-)' .. delimiter) do
-            table.insert(result, match)
-          end
-          return result
-        end
-
-        local f = assert(io.popen('quarto --paths', 'r'))
-        local s = assert(f:read '*a')
-        f:close()
-        return strsplit(s, '\n')[2]
-      end
-
-      local lua_library_files = vim.api.nvim_get_runtime_file('', true)
-      local lua_plugin_paths = {}
-      local resource_path = get_quarto_resource_path()
-      if resource_path == nil then
-        vim.notify_once 'quarto not found, lua library files not loaded'
-      else
-        table.insert(lua_library_files, resource_path .. '/lua-types')
-        table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
-      end
-
       vim.lsp.config.lua_ls = {
         settings = {
           Lua = {
@@ -191,7 +163,7 @@ return {
         },
       }
 
-      vim.lsp.bashls = {
+      vim.lsp.config.bashls = {
         filetypes = { 'sh', 'bash' },
       }
 
@@ -210,7 +182,6 @@ return {
       capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
       vim.lsp.config.pyright = {
-        capabilities = capabilities,
         settings = {
           python = {
             analysis = {
@@ -221,27 +192,6 @@ return {
           },
         },
         root_markers = { '.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt' },
-      }
-
-      vim.lsp.config.ltex = {
-        settings = {
-          ltex = {
-            language = 'en-US',
-            markdown = {
-              nodes = {
-                CodeBlock = "ignore",
-                FencedCodeBlock = "ignore",
-              },
-            },
-            additionalRules = {
-              enablePickyRules = false,
-              motherTongue = 'de-DE',
-            },
-            disabledRules = {
-              ['en-US'] = { 'FILE_EXTENSIONS_CASE', 'COMMA_PARENTHESIS_WHITESPACE', 'MORFOLOGIK_RULE_EN_US', 'WHITESPACE_RULE', 'UPPERCASE_SENTENCE_START' },
-            }
-          },
-        },
       }
 
       -- enable the servers
@@ -276,7 +226,7 @@ return {
 
 
   {
-    -- LSPSaga to enahcnce LSP features
+    -- LSPSaga to enhance LSP features
     'nvimdev/lspsaga.nvim',
     lazy = true,
     enabled = true,
