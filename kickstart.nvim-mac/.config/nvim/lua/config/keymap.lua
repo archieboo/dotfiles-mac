@@ -370,7 +370,7 @@ wk.add({
 
 
   { '<leader>v', group = '[v]im' },
-  { '<leader>vc', ':Telescope colorscheme<cr>', desc = '[c]olortheme' },
+  { '<leader>vc', function() require('telescope.builtin').colorscheme { enable_preview = true, ignore_builtins = true } end, desc = '[c]olortheme' },
   { '<leader>vh', ':execute "h " . expand("<cword>")<cr>', desc = 'vim [h]elp for current word' },
   { '<leader>vl', ':Lazy<cr>', desc = '[l]azy package manager' },
   { '<leader>vm', ':Mason<cr>', desc = '[m]ason software installer' },
