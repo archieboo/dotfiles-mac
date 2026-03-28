@@ -87,7 +87,14 @@ return {
 
           map('gd', '<cmd>Lspsaga goto_definition<cr>', '[g]o to [d]efinition')
           map('gD', vim.lsp.buf.type_definition, '[g]o to type [D]efinition')
-          map('K', '<cmd>Lspsaga hover_doc<cr>', 'hover documentation')
+          map('K', function()
+            -- otter.nvim intercepts native hover in quarto buffers; lspsaga bypasses it
+            if vim.bo.filetype == 'quarto' then
+              vim.lsp.buf.hover()
+            else
+              vim.cmd 'Lspsaga hover_doc'
+            end
+          end, 'hover documentation')
           map('<leader>lq', vim.diagnostic.setqflist, '[l]sp diagnostic [q]uickfix')
         end,
       })
