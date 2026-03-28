@@ -85,8 +85,9 @@ return {
           ---@diagnostic disable-next-line: inject-field
           client.server_capabilities.document_formatting = true
 
-          map('gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
+          map('gd', '<cmd>Lspsaga goto_definition<cr>', '[g]o to [d]efinition')
           map('gD', vim.lsp.buf.type_definition, '[g]o to type [D]efinition')
+          map('K', '<cmd>Lspsaga hover_doc<cr>', 'hover documentation')
           map('<leader>lq', vim.diagnostic.setqflist, '[l]sp diagnostic [q]uickfix')
         end,
       })

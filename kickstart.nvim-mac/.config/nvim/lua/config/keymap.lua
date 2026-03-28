@@ -25,12 +25,6 @@ local cmap = function(key, effect, desc)
   vim.keymap.set('c', key, effect, { silent = true, noremap = true, desc = desc })
 end
 
--- Move between windows using <ctrl> direction
-nmap('<C-j>', '<C-W>j', 'window down')
-nmap('<C-k>', '<C-W>k', 'window up')
-nmap('<C-h>', '<C-W>h', 'window left')
-nmap('<C-l>', '<C-W>l', 'window right')
-
 -- Resize window using <shift> arrow keys
 nmap('<S-Up>', '<cmd>resize +2<CR>', 'increase window height')
 nmap('<S-Down>', '<cmd>resize -2<CR>', 'decrease window height')
@@ -52,7 +46,7 @@ vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'exit terminal mode' })
 --- If an R terminal has been opend, this is in r_mode
 --- and will handle python code via reticulate when sent
 --- from a python chunk.
---- TODO: incorpoarate this into quarto-nvim plugin
+--- TODO: incorporate this into quarto-nvim plugin
 --- such that QuartoRun functions get the same capabilities
 --- TODO: figure out bracketed paste for reticulate python repl.
 local function send_cell()
@@ -82,7 +76,7 @@ end
 local slime_send_region_cmd = ':<C-u>call slime#send_op(visualmode(), 1)<CR>'
 slime_send_region_cmd = vim.api.nvim_replace_termcodes(slime_send_region_cmd, true, false, true)
 local function send_region()
-  -- if filetyps is not quarto, just send_region
+  -- if filetype is not quarto, just send_region
   if vim.bo.filetype ~= 'quarto' or vim.b['quarto_is_r_mode'] == nil then
     vim.cmd('normal' .. slime_send_region_cmd)
     return
@@ -188,7 +182,7 @@ wk.add({
 -- visual mode
 wk.add {
   mode = { 'v' },
-  { '.', ':norm .<cr>', desc = 'repat last normal mode command' },
+  { '.', ':norm .<cr>', desc = 'repeat last normal mode command' },
   { '<M-j>', ":m'>+<cr>`<my`>mzgv`yo`z", desc = 'move line down' },
   { '<M-k>', ":m'<-2<cr>`>my`<mzgv`yo`z", desc = 'move line up' },
   {
@@ -337,18 +331,16 @@ wk.add({
   },
   { '<leader>ldn', ':Lspsaga diagnostic_jump_next<cr>', desc = 'jump to [n]ext diagnostic' },
   { '<leader>ldp', ':Lspsaga diagnostic_jump_prev<cr>', desc = 'jump to [p]revious diagnostic' },
-  { '<leader>lds', ':Lspsaga show_line_diagnostics<cr>', desc = 'show [s]how line diagnostics' },
-  { '<leader>lD', ':Lspsaga goto_definition<cr>', desc = 'go to [D]efinition' },
+  { '<leader>lds', ':Lspsaga show_line_diagnostics<cr>', desc = '[s]how line diagnostics' },
   { '<leader>lp', ':Lspsaga peek_definition<cr>', desc = '[p]eek definition' },
   { '<leader>lR', ':Lspsaga rename<cr>', desc = '[R]ename' },
-  { '<leader>lf', ':Lspsaga finder<cr>', desc = '[f]ind symboles' }, -- doesn't work in quarto
+  { '<leader>lf', ':Lspsaga finder<cr>', desc = '[f]ind symbols' }, -- doesn't work in quarto
   { '<leader>lr',
     function()
       require('telescope.builtin').lsp_references()
     end, desc = 'go to [r]eferences' },
   { '<leader>lo', ':Trouble symbols<cr>', desc = 'symbols [o]utline in buffer' },
   { mode = { 'n', 'v' }, '<leader>lF', vim.lsp.buf.format, desc = '[F]ormat code' },
-  { 'K', ':Lspsaga hover_doc<cr>', desc = 'Documentation' },
 
   { '<leader>o', group = '[o]tter & c[o]de' },
   { '<leader>ob', insert_bash_chunk, desc = '[b]ash code chunk' },
@@ -374,7 +366,7 @@ wk.add({
   { '<leader>tt', ':ToggleTerm<cr>', desc = '[t]erminal [t]oggle' },
   { '<leader>ts', ':TermSelect<cr>', desc = '[t]erminal [s]elect' },
 
-  { '<leader>mt', ':Markview toggleAll<cr>', desc = '[m]arkview [t]oggal all chunks' },
+  { '<leader>mt', ':Markview toggleAll<cr>', desc = '[m]arkview [t]oggle all' },
 
 
   { '<leader>v', group = '[v]im' },
@@ -387,10 +379,10 @@ wk.add({
 
   { '<leader>w', group = '[w]indow' },
   { '<leader>wd', vim.diagnostic.open_float, desc = 'show [d]iagnostics under cursor' },
-  { '<leader>wh', '<C-w>h', desc = 'move [h]orizontally' },
-  { '<leader>wj', '<C-w>j', desc = 'move [j]ump' },
-  { '<leader>wk', '<C-w>k', desc = 'move [k]ump' },
-  { '<leader>wl', '<C-w>l', desc = 'move [l]orizontally' },
+  { '<leader>wh', '<C-w>h', desc = 'move [h] left' },
+  { '<leader>wj', '<C-w>j', desc = 'move [j] down' },
+  { '<leader>wk', '<C-w>k', desc = 'move [k] up' },
+  { '<leader>wl', '<C-w>l', desc = 'move [l] right' },
   { '<leader>ws', '<cmd>split<cr>', desc = '[s]plit' },
   { '<leader>wv', '<cmd>vsplit<cr>', desc = '[v]split' },
   { '<leader>ww', '<C-w>w', desc = 'move to [w]indow' },
