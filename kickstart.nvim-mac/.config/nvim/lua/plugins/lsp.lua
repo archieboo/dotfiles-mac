@@ -126,6 +126,7 @@ return {
           r = {
             lsp = {
               rich_documentation = false,
+              diagnostics = false,
             },
           },
         },

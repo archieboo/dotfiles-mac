@@ -299,6 +299,7 @@ wk.add({
   { '<leader>e', group = '[e]dit' },
 
   { '<leader>f', group = '[f]ind (telescope)' },
+  { '<leader>fa', '<cmd>Telescope aerial<cr>', desc = '[a]erial symbols' },
   { '<leader>fM', '<cmd>Telescope man_pages<cr>', desc = '[M]an pages' },
   { '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>', desc = 'current [b]uffer fuzzy find' },
   { '<leader>fc', '<cmd>Telescope git_commits<cr>', desc = 'git [c]ommits' },
